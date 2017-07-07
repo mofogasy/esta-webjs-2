@@ -12,3 +12,16 @@
     margin-top: ($headerHeight - $logoHeight) / 2 - $headerPadding;
   }
 }
+
+.logo {
+  padding-left: 15px;
+}
+
+.user-icon {
+  padding-right: 5px;
+}
+
+.auth-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
