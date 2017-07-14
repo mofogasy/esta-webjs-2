@@ -9,32 +9,54 @@
  */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterModule} from '@angular/router';
+import {AuthService, KeycloakProfile} from 'esta-webjs-extensions';
 
 import {NavComponent} from './nav.component';
+import {Observable} from 'rxjs/Observable';
 
 describe('NavbarComponent', () => {
-    let component: NavComponent;
-    let fixture: ComponentFixture<NavComponent>;
+  let component: NavComponent;
+  let fixture: ComponentFixture<NavComponent>;
 
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            imports: [RouterModule.forRoot([], {useHash: true})],
-            declarations: [NavComponent]
-        }).compileComponents();
-    }));
+  class MockAuthService {
+    public authenticated() {
+      return true;
+    }
+    public getUserInfo(): Observable<KeycloakProfile> {
+      return Observable.of({
+        id: 'user',
+        username: 'test',
+        email: 'test@xx.com',
+        firstName: 'Test',
+        lastName: 'User',
+        enabled: true,
+        emailVerified: true,
+        totp: true,
+        createdTimestamp: 1
+      })
+    }
+  }
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(NavComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterModule.forRoot([], {useHash: true})],
+      providers: [{provide: AuthService, useClass: MockAuthService}],
+      declarations: [NavComponent]
+    }).compileComponents();
+  }));
 
-    it(`should declare navItems for home, about and theme`, () => {
-        const expectedNavItems = [
-            {displayName: 'Home', routerLink: ''},
-            {displayName: 'About', routerLink: 'about'},
-            {displayName: 'Theme', routerLink: 'theme'}
-        ];
-        expect(expectedNavItems).toEqual(component.navItems);
-    });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NavComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it(`should declare navItems for home, about and theme`, () => {
+    const expectedNavItems = [
+      {displayName: 'Home', routerLink: ''},
+      {displayName: 'About', routerLink: 'about'},
+      {displayName: 'Theme', routerLink: 'theme'}
+    ];
+    expect(expectedNavItems).toEqual(component.navItems);
+  });
 });
