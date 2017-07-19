@@ -13,72 +13,72 @@ import {TranslateService} from '@ngx-translate/core';
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {Observable} from 'rxjs/Observable';
-import {AuthService,KeycloakProfile} from 'esta-webjs-extensions';
+import {AuthService, KeycloakProfile} from 'esta-webjs-extensions';
 
 describe('AppComponent', () => {
-  beforeEach(() => {
+    beforeEach(() => {
 
-    class TranslationMock {
-      public setDefaultLang() {
-      }
+        class TranslationMock {
+            public setDefaultLang() {
+            }
 
-      public use() {
-      }
-    }
+            public use() {
+            }
+        }
 
-    class MockAuthService {
-      public authenticated() {
-        return true;
-      }
+        class MockAuthService {
+            public authenticated() {
+                return true;
+            }
 
-      public getUserInfo(): Observable<KeycloakProfile> {
-        return Observable.of({
-          id: 'user',
-          username: 'test',
-          email: 'test@xx.com',
-          firstName: 'Test',
-          lastName: 'User',
-          enabled: true,
-          emailVerified: true,
-          totp: true,
-          createdTimestamp: 1
-        })
-      }
-    }
+            public getUserInfo(): Observable<KeycloakProfile> {
+                return Observable.of({
+                    id: 'user',
+                    username: 'test',
+                    email: 'test@xx.com',
+                    firstName: 'Test',
+                    lastName: 'User',
+                    enabled: true,
+                    emailVerified: true,
+                    totp: true,
+                    createdTimestamp: 1
+                })
+            }
+        }
 
 
-    TestBed.configureTestingModule({
-      imports: [
-        CoreModule,
-        RouterModule.forRoot([], {useHash: true})
-      ],
-      declarations: [
-        AppComponent
-      ],
-      providers: [
-        {provide: TranslateService, useClass: TranslationMock},
-        {provide: AuthService, useClass: MockAuthService}
-      ]
+        TestBed.configureTestingModule({
+            imports: [
+                CoreModule,
+                RouterModule.forRoot([], {useHash: true})
+            ],
+            declarations: [
+                AppComponent
+            ],
+            providers: [
+                {provide: TranslateService, useClass: TranslationMock},
+                {provide: AuthService, useClass: MockAuthService}
+            ]
+        });
+        TestBed.compileComponents();
     });
-    TestBed.compileComponents();
-  });
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+    it('should create the app', async(() => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+        expect(app).toBeTruthy();
+    }));
 
-  it('should call the set and use of the Translationservice',
-    inject([TranslateService], (translationService: TranslateService) => {
-      // given
-      spyOn(translationService, 'use');
-      spyOn(translationService, 'setDefaultLang');
-      // when
-      TestBed.createComponent(AppComponent);
-      // then
-      expect(translationService.use).toHaveBeenCalledWith('de');
-      expect(translationService.setDefaultLang).toHaveBeenCalledWith('de');
-    })
-  );
+    it('should call the set and use of the Translationservice',
+        inject([TranslateService], (translationService: TranslateService) => {
+            // given
+            spyOn(translationService, 'use');
+            spyOn(translationService, 'setDefaultLang');
+            // when
+            TestBed.createComponent(AppComponent);
+            // then
+            expect(translationService.use).toHaveBeenCalledWith('de');
+            expect(translationService.setDefaultLang).toHaveBeenCalledWith('de');
+        })
+    );
 });
