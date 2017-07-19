@@ -13,6 +13,7 @@ import {HttpModule, XHRBackend} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {ButtonModule, GrowlModule, Message} from 'primeng/primeng';
+import 'rxjs/add/observable/of';
 import {Observable} from 'rxjs/Observable';
 
 import {AboutComponent} from './about.component';
