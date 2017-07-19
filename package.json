@@ -11,7 +11,7 @@
     "test": "ng test --watch=false",
     "test-selenium": "ng test --progress=false --watch=false --browsers=SeleniumCH,SeleniumFF --code-coverage",
     "e2e": "ng e2e",
-    "e2e-selenium": "ng e2e --progress=false --disableHostCheck=true --host=0.0.0.0 --port=$(echo $externalport) --publicHost=$(my-local-ip):$(echo $externalport) --config=protractor.webgrid.conf.js",
+    "e2e-selenium": "ng e2e --progress=false --disableHostCheck=true --port=$(echo $externalport) --public-host=$(my-local-ip):$(echo $externalport) --config=protractor.webgrid.conf.js",
     "prebuild-prod": "npm run test-selenium && npm run e2e-selenium",
     "build-prod": "ng build --prod --progress=false"
   },
@@ -37,7 +37,7 @@
     "zone.js": "=0.8.12"
   },
   "devDependencies": {
-    "@angular/cli": "^1.3.0-beta.0",
+    "@angular/cli": "=1.3.0-beta.0",
     "@angular/compiler-cli": "^4.2.2",
     "@types/jasmine": "^2.5.51",
     "@types/node": "^7.0.29",
