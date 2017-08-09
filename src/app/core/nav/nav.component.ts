@@ -12,25 +12,30 @@ import {AuthService, KeycloakProfile} from 'esta-webjs-extensions';
 import {Observable} from 'rxjs/Observable';
 
 interface NavItem {
-    displayName: string;
-    routerLink: string;
+  displayName: string;
+  routerLink: string;
 }
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './nav.component.html',
-    styleUrls: ['./nav.component.scss']
+  selector: 'app-navbar',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
 
-    public navItems: Array<NavItem> = [
-        {displayName: 'Home', routerLink: ''},
-        {displayName: 'About', routerLink: 'about'},
-        {displayName: 'Theme', routerLink: 'theme'}
-    ];
-    public userInfo: Observable<KeycloakProfile>;
+  public navItems: Array<NavItem> = [
+    {displayName: 'Home', routerLink: 'home'},
+    {displayName: 'About', routerLink: 'about'},
+    {displayName: 'Theme', routerLink: 'theme'}
+  ];
 
-    constructor(public authService: AuthService) {
-        this.userInfo = this.authService.getUserInfo();
-    }
+  public userInfo: Observable<KeycloakProfile>;
+
+  public isCollapsed: boolean;
+
+  constructor(public authService: AuthService) {
+    this.userInfo = this.authService.getUserInfo();
+    this.isCollapsed = true;
+  }
+
 }
