@@ -1,8 +1,6 @@
 @import 'app-variables';
 
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -11,7 +9,7 @@ html, body {
 }
 
 body {
-  font-family: $fontFamily;
+  font-family: 'SBBWeb Light', Arial, Helvetica, sans-serif;
   font-size: 15px;
 }
 
@@ -49,7 +47,6 @@ h6 {
   font-size: 1rem;
 }
 
-.ui-growl{
-  position: absolute;
-  z-index: 1050 !important;
+main > .container {
+  padding-top: $headerHeight / 2;
 }
