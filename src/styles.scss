@@ -1,12 +1,1 @@
-/* Obacht: Die Reihenfolge der Imports ist relevant und darf nicht geändert werden. */
-// SBB corporate design guidelines
-@import 'style/sbb-fonts';
-@import 'style/sbb-colors';
-// Bootstrap stuff
-@import 'style/bootstrap-variables';
-// PrimeNG stuff
-@import 'style/primeng-variables';
-@import 'style/primeng-overrides';
-// Custom app stuff
-@import 'style/app-variables';
-@import 'style/app-style';
+@import '../node_modules/esta-webjs-extensions/src/styles/esta-extension-styles.scss';

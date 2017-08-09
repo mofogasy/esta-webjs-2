@@ -1,6 +1,6 @@
 @import '../../../../node_modules/bootstrap/scss/variables';
-@import '../../../style/app-variables';
-@import '../../../style/sbb-colors';
+@import '../../../../node_modules/esta-webjs-extensions/src/styles/app-variables';
+@import '../../../../node_modules/esta-webjs-extensions/src/styles/sbb-colors';
 
 .comp_header {
   height: $headerHeight;
