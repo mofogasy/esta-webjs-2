@@ -12,6 +12,12 @@ import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './core/home/home.component';
 
 const appRoutes: Routes = [
+    // Routes für ExampleModule werden vollständig im Modul definiert
+
+    // Der Einstiegspunkt für das LazyExampleModule muss hier definiert werden
+    {path: 'lazy', loadChildren: 'app/lazy-example/lazy-example.module#LazyExampleModule'},
+
+    // Default route
     {path: '**', component: HomeComponent}
 ];
 

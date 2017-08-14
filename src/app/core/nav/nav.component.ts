@@ -26,7 +26,8 @@ export class NavComponent {
   public navItems: Array<NavItem> = [
     {displayName: 'Home', routerLink: 'home'},
     {displayName: 'About', routerLink: 'about'},
-    {displayName: 'Theme', routerLink: 'theme'}
+    {displayName: 'Theme', routerLink: 'theme'},
+    {displayName: 'Lazy loading', routerLink: 'lazy'}
   ];
 
   public userInfo: Observable<KeycloakProfile>;

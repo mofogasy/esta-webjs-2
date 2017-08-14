@@ -1,0 +1,30 @@
+<div class="jumbotron">
+  <h1>
+    Lazy-loaded module
+  </h1>
+  <h2>About</h2>
+  <section>
+    <h3>ng serve</h3>
+    <p>
+      Beim Starten / Builden der Anwendung wird für das Modul lazy-example ein eigener Chunk kreiert.
+    </p>
+
+    <p>
+      <code>
+        chunk &#123;lazy-example.module&#125; lazy-example.module.chunk.js, lazy-example.module.chunk.js.map () 11.2 kB &#123;main&#125;  [rendered]
+      </code>
+    </p>
+
+    <p>
+      In den Entwicklertools unter Network kann man verfolgen, wie das entsprechende Modul beim ersten Zugriff geladen wird.
+    </p>
+  </section>
+  <section>
+    <h3>Howto</h3>
+    <ul>
+      <li>
+        <a href="https://angular.io/guide/router#milestone-6-asynchronous-routing">Asynchronous routing</a>
+      </li>
+    </ul>
+  </section>
+</div>
