@@ -1,0 +1,33 @@
+<div class="jumbotron">
+  <h1>
+    Preloaded module
+  </h1>
+  <h2>About</h2>
+  <section>
+    <h3>ng serve</h3>
+    <p>
+      Beim Starten / Builden der Anwendung wird für das Modul preload-example ein eigener Chunk kreiert.
+      Anders als beim <a [routerLink]="['/lazy']">lazy-example</a> Modul wird der Chunk aber geladen, <b>bevor</b> auf den entsprechenden
+      Link geklickt wird, jedoch erst <b>nachdem</b> die (Haupt-)Anwendung geladen wurde.
+    </p>
+
+    <p>
+      <code>
+        chunk &#123;preload-example.module&#125; preload-example.module.chunk.js, preload-example.module.chunk.js.map () 11.4 kB &#123;main&#125;  [rendered]
+      </code>
+    </p>
+
+    <p>
+      In den Entwicklertools unter Network kann man verfolgen, wie das entsprechende Modul automatisch geladen wird, noch bevor man auf den Link
+      <a [routerLink]="['/preload']">Preloading</a> clickt.
+    </p>
+  </section>
+  <section>
+    <h3>Howto</h3>
+    <ul>
+      <li>
+        <a href="https://angular.io/guide/router#preloading-background-loading-of-feature-areas">Preloading</a>
+      </li>
+    </ul>
+  </section>
+</div>

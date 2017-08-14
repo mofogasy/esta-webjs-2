@@ -10,12 +10,20 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './core/home/home.component';
+import {CustomPreloadingStrategy} from "./custom-preloading-strategy";
 
 const appRoutes: Routes = [
     // Routes für ExampleModule werden vollständig im Modul definiert
 
     // Der Einstiegspunkt für das LazyExampleModule muss hier definiert werden
     {path: 'lazy', loadChildren: 'app/lazy-example/lazy-example.module#LazyExampleModule'},
+
+    // Dieses Modul wird automatisch geladen, jedoch erst nach dem Laden der (Haupt-)Anwendung
+    {
+        path: 'preload',
+        loadChildren: 'app/preload-example/preload-example.module#PreloadExampleModule',
+        data: {preload: true}
+    },
 
     // Default route
     {path: '**', component: HomeComponent}
@@ -27,12 +35,16 @@ const appRoutes: Routes = [
             appRoutes,
             {
                 useHash: true,
-                enableTracing: true // for debugging
+                preloadingStrategy: CustomPreloadingStrategy,
+                enableTracing: true     // for debugging
             }
         )
     ],
     exports: [
         RouterModule
+    ],
+    providers: [
+        CustomPreloadingStrategy
     ]
 })
 export class AppRoutingModule {}
