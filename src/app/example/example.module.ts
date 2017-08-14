@@ -32,6 +32,7 @@ import {
 } from 'primeng/primeng';
 import {AboutComponent} from './about/about.component';
 import {ThemeComponent} from './theme/theme.component';
+import {ExampleRoutingModule} from "./example-routing.module";
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import {ThemeComponent} from './theme/theme.component';
         ThemeComponent
     ],
     imports: [
+        ExampleRoutingModule,
         CommonModule,
         HttpModule,
         FormsModule,

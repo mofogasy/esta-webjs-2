@@ -14,9 +14,10 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {AppComponent} from './app.component';
-import {routing} from './app.routes';
 import {CoreModule} from './core/core.module';
 import {ExampleModule} from './example/example.module';
+import {AppRoutingModule} from "./app-routing.module";
+import {Router} from "@angular/router";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -36,9 +37,14 @@ export function HttpLoaderFactory(http: Http) {
                 deps: [Http]
             }
         }),
-        routing
+        AppRoutingModule
     ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
+
+    // Diagnostic only: inspect router configuration
+    constructor(router: Router) {
+        console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+    }
 }
