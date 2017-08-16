@@ -51,11 +51,13 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it(`should declare navItems for home, about and theme`, () => {
+  it(`should declare navItems for home, about, theme, lazy and preload`, () => {
     const expectedNavItems = [
-      {displayName: 'Home', routerLink: ''},
+      {displayName: 'Home', routerLink: 'home'},
       {displayName: 'About', routerLink: 'about'},
-      {displayName: 'Theme', routerLink: 'theme'}
+      {displayName: 'Theme', routerLink: 'theme'},
+      {displayName: 'Lazy loading', routerLink: 'lazy'},
+      {displayName: 'Preloading', routerLink: 'preload'}
     ];
     expect(expectedNavItems).toEqual(component.navItems);
   });

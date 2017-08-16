@@ -13,9 +13,13 @@ import {HomeComponent} from './core/home/home.component';
 import {CustomPreloadingStrategy} from "./custom-preloading-strategy";
 
 const appRoutes: Routes = [
-    // Routes für ExampleModule werden vollständig im Modul definiert
+    // Routes für das app Modul
+    {path: 'home', component: HomeComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
 
-    // Der Einstiegspunkt für das LazyExampleModule muss hier definiert werden
+    // Routes für ExampleModule werden vollständig im Modul (example-routing.module.ts) definiert
+
+    // Der Einstiegspunkt für das LazyExampleModule, welches erst beim Zugriff geladen wird
     {path: 'lazy', loadChildren: 'app/lazy-example/lazy-example.module#LazyExampleModule'},
 
     // Dieses Modul wird automatisch geladen, jedoch erst nach dem Laden der (Haupt-)Anwendung

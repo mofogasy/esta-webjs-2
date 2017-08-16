@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutPreloadComponent } from './about-preload.component';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('AboutPreloadComponent', () => {
   let component: AboutPreloadComponent;
@@ -8,7 +9,8 @@ describe('AboutPreloadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutPreloadComponent ]
+      declarations: [ AboutPreloadComponent ],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   }));
