@@ -22,6 +22,7 @@ describe('NavbarComponent', () => {
     public authenticated() {
       return true;
     }
+
     public getUserInfo(): Observable<KeycloakProfile> {
       return Observable.of({
         id: 'user',
@@ -53,7 +54,7 @@ describe('NavbarComponent', () => {
 
   it(`should declare navItems for home, about and theme`, () => {
     const expectedNavItems = [
-      {displayName: 'Home', routerLink: ''},
+      {displayName: 'Home', routerLink: 'home'},
       {displayName: 'About', routerLink: 'about'},
       {displayName: 'Theme', routerLink: 'theme'}
     ];
