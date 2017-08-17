@@ -22,6 +22,7 @@ describe('NavbarComponent', () => {
     public authenticated() {
       return true;
     }
+
     public getUserInfo(): Observable<KeycloakProfile> {
       return Observable.of({
         id: 'user',

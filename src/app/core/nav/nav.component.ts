@@ -33,11 +33,10 @@ export class NavComponent {
 
   public userInfo: Observable<KeycloakProfile>;
 
-  public isCollapsed: boolean;
+  public isCollapsed = true;
 
   constructor(public authService: AuthService) {
     this.userInfo = this.authService.getUserInfo();
-    this.isCollapsed = true;
   }
 
 }
