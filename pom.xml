@@ -5,7 +5,7 @@
 
   <groupId>ch.sbb.esta.webjs</groupId>
   <artifactId>esta-webjs-2-starterkit</artifactId>
-  <version>4.3.4-RELEASE</version>
+  <version>4.3.4-SNAPSHOT</version>
 
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
@@ -18,7 +18,8 @@
     <sonar.exclusions>**/node_modules/**,**/*.spec.ts,**/*.module.ts,**/*.routes.ts</sonar.exclusions>
     <sonar.test.inclusion>**/*.spec.ts</sonar.test.inclusion>
     <sonar.ts.tslint.configPath>tslint.json</sonar.ts.tslint.configPath>
-    <sonar.ts.coverage.lcovReportPath>coverage/lcov.info</sonar.ts.coverage.lcovReportPath>
+    <sonar.ts.coverage.lcovReportPath>reports/coverage/lcov.info</sonar.ts.coverage.lcovReportPath>
+    <jenkins.build-javascript.reportsDirectory>reports/</jenkins.build-javascript.reportsDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -103,6 +104,7 @@
           <filesets>
             <fileset>
               <directory>dist</directory>
+              <directory>reports</directory>
             </fileset>
           </filesets>
         </configuration>
