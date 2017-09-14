@@ -30,12 +30,18 @@ exports.config = {
     },
     beforeLaunch: function () {
     },
-    onPrepare()
-    {
-      console.log('reto', hostname, externalport);
+    onPrepare(){
         require('ts-node').register({
             project: 'e2e/tsconfig.e2e.json'
         });
         jasmine.getEnv().addReporter(new SpecReporter({spec: {displayStacktrace: true}}));
+        jasmine.getEnv().addReporter(new (require('jasmine-reporters').JUnitXmlReporter)({
+            filePrefix: 'e2e-tests',
+            savePath: 'reports',
+            package: 'e2e',
+            modifySuiteName: function (generatedSuiteName) {
+                return 'e2e.' + generatedSuiteName.replace(/\./g, '#');
+            }
+        }));
     }
 };
