@@ -19,7 +19,7 @@ pipeline {
         branch 'develop'
       }
       steps {
-         sh 'mvn -B clean deploy'
+         sh 'mvn clean && npm run build-prod && mvn deploy'
          withSonarQubeEnv('Sonar SBB CFF FFS AG') {
              sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test'
              // the argument -Dsonar.branch=$BRANCH_NAME' is optional
@@ -30,7 +30,7 @@ pipeline {
 
     stage('Unit Tests') {
       steps {
-         sh 'npm run build-prod'
+         sh 'npm run test-selenium && npm run e2e-selenium'
          junit '**/target/surefire-reports/*.xml'
       }
     }

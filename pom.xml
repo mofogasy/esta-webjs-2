@@ -44,22 +44,6 @@
               <goal>exec</goal>
             </goals>
           </execution>
-          <!--
-          <execution>
-            <id>build-javascript</id>
-            <configuration>
-              <executable>npm</executable>
-              <arguments>
-                <argument>run</argument>
-                <argument>build-prod</argument>
-              </arguments>
-            </configuration>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-          </execution>
-          -->
         </executions>
       </plugin>
 
