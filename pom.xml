@@ -44,6 +44,7 @@
               <goal>exec</goal>
             </goals>
           </execution>
+          <!--
           <execution>
             <id>build-javascript</id>
             <configuration>
@@ -58,6 +59,7 @@
               <goal>exec</goal>
             </goals>
           </execution>
+          -->
         </executions>
       </plugin>
 
