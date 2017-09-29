@@ -1,7 +1,7 @@
 {
   "name": "webjs-starterkit",
   "description": "This is a starterkit based on angular-cli with enterprise extensions",
-  "version": "4.4.3",
+  "version": "4.4.4-SNAPSHOT",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
