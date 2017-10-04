@@ -34,7 +34,7 @@ describe('NavbarComponent', () => {
         emailVerified: true,
         totp: true,
         createdTimestamp: 1
-      })
+      });
     }
   }
 

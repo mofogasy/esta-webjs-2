@@ -16,18 +16,18 @@ import {TranslateModule} from '@ngx-translate/core';
 import {
     AccordionModule,
     BreadcrumbModule,
-    ButtonModule,
+    ButtonModule, CalendarModule, CheckboxModule, ConfirmationService, ConfirmDialogModule,
     DataTableModule,
     DropdownModule,
     FieldsetModule,
     GrowlModule,
-    InputMaskModule,
-    MessagesModule,
-    PanelModule,
+    InputMaskModule, InputSwitch, InputSwitchModule, InputTextModule, ListboxModule, MenubarModule,
+    MessagesModule, MultiSelectModule, PaginatorModule,
+    PanelModule, ProgressBarModule,
     RadioButtonModule,
     SelectButtonModule,
-    SharedModule,
-    SplitButtonModule,
+    SharedModule, SliderModule, SpinnerModule,
+    SplitButtonModule, StepsModule, TabViewModule,
     ToggleButtonModule
 } from 'primeng/primeng';
 import {AboutComponent} from './about/about.component';
@@ -59,8 +59,23 @@ import {ThemeComponent} from './theme/theme.component';
         SharedModule,
         MessagesModule,
         GrowlModule,
-        PanelModule
-    ]
+        PanelModule,
+        CheckboxModule,
+        CalendarModule,
+        InputSwitchModule,
+        SpinnerModule,
+        InputTextModule,
+        ListboxModule,
+        MultiSelectModule,
+        SliderModule,
+        PaginatorModule,
+        TabViewModule,
+        ConfirmDialogModule,
+        StepsModule,
+        MenubarModule,
+        ProgressBarModule
+    ],
+    providers: [ConfirmationService]
 })
 export class ExampleModule {
 }
