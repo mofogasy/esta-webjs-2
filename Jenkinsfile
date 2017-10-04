@@ -6,7 +6,7 @@
 @Library(['github.com/SchweizerischeBundesbahnen/jenkins-pipeline-helper@master', 'wzu-pipeline-helper']) _
 
 pipeline {
-   agent { label 'node' }
+   agent { label 'java' }
    tools {
        maven 'Apache Maven 3.3'
        jdk 'OpenJDK 1.8 64-Bit'
@@ -19,19 +19,26 @@ pipeline {
         branch 'develop'
       }
       steps {
-         sh 'mvn clean && npm run build-prod && mvn deploy'
-         withSonarQubeEnv('Sonar SBB CFF FFS AG') {
-             sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test'
-             // the argument -Dsonar.branch=$BRANCH_NAME' is optional
-             sh 'mvn -B sonar:sonar -Dsonar.branch=$BRANCH_NAME'
+        dir('dist') {
+          deleteDir()
+        }
+        dir('reports') {
+          deleteDir()
+        }
+        sh 'npm run build-prod'
+        withSonarQubeEnv('Sonar SBB CFF FFS AG') {
+            sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test'
+            // the argument -Dsonar.branch=$BRANCH_NAME' is optional
+            sh 'mvn -B sonar:sonar -Dsonar.branch=$BRANCH_NAME'
          }
       }
     }
 
     stage('Unit Tests') {
       steps {
+         sh 'npm install'
          sh 'npm run test-selenium && npm run e2e-selenium'
-         junit '**/target/surefire-reports/*.xml'
+         junit '**/reports/*.xml'
       }
     }
 
