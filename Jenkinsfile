@@ -12,8 +12,19 @@ pipeline {
        jdk 'OpenJDK 1.8 64-Bit'
    }
 
-
    stages {
+    stage('Unit Tests') {
+      steps {
+         sh 'npm install'
+         sh 'npm run test-selenium && npm run e2e-selenium'
+         junit '**/reports/*.xml'
+         withSonarQubeEnv('Sonar SBB CFF FFS AG') {
+            sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test -Dsonar.language=ts -Dsonar.profile=TsLint -Dsonar.sources="src/app" -Dsonar.verbose=true -Dsonar.exclusions="**/node_modules/**,**/*.spec.ts,**/*.module.ts,**/*.routes.ts" -Dsonar.test.inclusion="**/*.spec.ts" -Dsonar.ts.tslint.configPath="tslint.json" -Dsonar.ts.coverage.lcovReportPath="reports/coverage/lcov.info"'
+            sh 'mvn -B sonar:sonar -Dsonar.branch=$BRANCH_NAME'
+         }
+      }
+    }
+
     stage('When on develop, deploy snapshot and analyze for sonar') {
       when {
         branch 'develop'
@@ -29,17 +40,6 @@ pipeline {
       }
     }
 
-    stage('Unit Tests') {
-      steps {
-         sh 'npm install'
-         sh 'npm run test-selenium && npm run e2e-selenium'
-         junit '**/reports/*.xml'
-         withSonarQubeEnv('Sonar SBB CFF FFS AG') {
-            sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test -Dsonar.language=ts -Dsonar.profile=TsLint -Dsonar.sources="src/app" -Dsonar.verbose=true -Dsonar.exclusions="**/node_modules/**,**/*.spec.ts,**/*.module.ts,**/*.routes.ts" -Dsonar.test.inclusion="**/*.spec.ts" -Dsonar.ts.tslint.configPath="tslint.json" -Dsonar.ts.coverage.lcovReportPath="reports/coverage/lcov.info"'
-            sh 'mvn -B sonar:sonar -Dsonar.branch=$BRANCH_NAME'
-         }
-      }
-    }
 
     stage('When on master, we create a release & deploy') {
       when {

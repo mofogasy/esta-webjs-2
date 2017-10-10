@@ -5,7 +5,7 @@
 
   <groupId>ch.sbb.esta.webjs</groupId>
   <artifactId>esta-webjs-2-starterkit</artifactId>
-  <version>4.3.4-SNAPSHOT</version>
+  <version>4.4.3-RELEASE</version>
 
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
@@ -37,6 +37,20 @@
               <executable>npm</executable>
               <arguments>
                 <argument>install</argument>
+              </arguments>
+            </configuration>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>build-javascript</id>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run</argument>
+                <argument>build-prod</argument>
               </arguments>
             </configuration>
             <phase>generate-resources</phase>
