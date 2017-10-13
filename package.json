@@ -6,13 +6,17 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
+    "clean": "rimraf dist",
     "start": "ng serve",
     "lint": "ng lint --type-check",
     "test": "ng test --watch=false",
     "test-selenium": "ng test --progress=false --watch=false --browsers=SeleniumCH,SeleniumFF --code-coverage",
     "e2e": "ng e2e",
     "e2e-selenium": "ng e2e --progress=false --host=0.0.0.0 --disableHostCheck=true --port=$(echo $externalport) --public-host=$(echo $host):$(echo $externalport) --config=protractor.webgrid.conf.js",
-    "build-prod": "ng build --prod --progress=false"
+    "prebuild-prod": "npm run clean",
+    "build-prod": "ng build --prod",
+    "build-prod:remote": "npm run build-prod -- --progress=false",
+    "build-prod:local": "npm run build-prod"
   },
   "private": true,
   "dependencies": {
@@ -56,6 +60,7 @@
     "my-local-ip": "=1.0.0",
     "nightmare": "=2.10.0",
     "protractor": "=5.1.2",
+    "rimraf": "^2.6.2",
     "ts-node": "=3.0.6",
     "tslint": "=5.4.3",
     "typescript": "=2.3.3"
