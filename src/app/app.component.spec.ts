@@ -42,7 +42,7 @@ describe('AppComponent', () => {
                     emailVerified: true,
                     totp: true,
                     createdTimestamp: 1
-                })
+                });
             }
         }
 

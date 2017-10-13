@@ -5,7 +5,7 @@
 
   <groupId>ch.sbb.esta.webjs</groupId>
   <artifactId>esta-webjs-2-starterkit</artifactId>
-  <version>4.4.3-RELEASE</version>
+  <version>4.4.4-SNAPSHOT</version>
 
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
