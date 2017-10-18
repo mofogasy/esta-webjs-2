@@ -15,21 +15,21 @@ import {HomeComponent} from './home/home.component';
 import {throwIfAlreadyLoaded} from './module-import-guard';
 import {NavComponent} from './nav/nav.component';
 import {AuthModule} from 'esta-webjs-extensions';
-import {ButtonModule} from 'primeng/primeng';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    AuthModule,
-    ButtonModule
-  ],
-  declarations: [NavComponent, HomeComponent],
-  exports: [NavComponent]
+    imports: [
+        CommonModule,
+        RouterModule,
+        AuthModule,
+        HttpClientModule
+    ],
+    declarations: [NavComponent, HomeComponent],
+    exports: [NavComponent]
 })
 export class CoreModule {
 
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-    throwIfAlreadyLoaded(parentModule, 'core module');
-  }
+    constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+        throwIfAlreadyLoaded(parentModule, 'core module');
+    }
 }

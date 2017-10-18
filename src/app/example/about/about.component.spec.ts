@@ -9,8 +9,6 @@
  */
 import {Pipe, PipeTransform} from '@angular/core';
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
-import {HttpModule, XHRBackend} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {ButtonModule, GrowlModule, Message} from 'primeng/primeng';
 import 'rxjs/add/observable/of';
@@ -60,9 +58,9 @@ describe('AboutComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [HttpModule, GrowlModule, ButtonModule],
+            imports: [GrowlModule, ButtonModule],
             declarations: [AboutComponent, MockPipe],
-            providers: [{provide: XHRBackend, useClass: MockBackend},
+            providers: [
                 {provide: TranslateService, useClass: TranslateServiceMock}
             ]
         })
