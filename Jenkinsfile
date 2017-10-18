@@ -15,8 +15,8 @@ pipeline {
    stages {
     stage('Unit Tests') {
       steps {
-         sh 'npm run clean'
          sh 'npm install'
+         sh 'npm run clean'
          sh 'npm run test-selenium && npm run e2e-selenium'
          junit '**/reports/*.xml'
          withSonarQubeEnv('Sonar SBB CFF FFS AG') {
