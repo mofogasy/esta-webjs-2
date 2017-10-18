@@ -6,17 +6,14 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist reports",
     "start": "ng serve -o",
     "lint": "ng lint --type-check",
     "test": "ng test --watch=false",
     "test-selenium": "ng test --progress=false --watch=false --browsers=SeleniumCH,SeleniumFF --code-coverage",
     "e2e": "ng e2e",
     "e2e-selenium": "ng e2e --progress=false --host=0.0.0.0 --disableHostCheck=true --port=$(echo $externalport) --public-host=$(echo $host):$(echo $externalport) --config=protractor.webgrid.conf.js",
-    "prebuild-prod": "npm run clean",
-    "build-prod": "ng build --prod",
-    "build-prod:remote": "npm run build-prod -- --progress=false",
-    "build-prod:local": "npm run build-prod"
+    "build-prod": "ng build --prod"
   },
   "private": false,
   "dependencies": {

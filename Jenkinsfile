@@ -15,12 +15,14 @@ pipeline {
    stages {
     stage('Unit Tests') {
       steps {
+         sh 'npm run clean'
          sh 'npm install'
          sh 'npm run test-selenium && npm run e2e-selenium'
          junit '**/reports/*.xml'
          withSonarQubeEnv('Sonar SBB CFF FFS AG') {
-            sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test -Dsonar.language=ts -Dsonar.profile=TsLint -Dsonar.sources="src/app" -Dsonar.verbose=true -Dsonar.exclusions="**/node_modules/**,**/*.spec.ts,**/*.module.ts,**/*.routes.ts" -Dsonar.test.inclusion="**/*.spec.ts" -Dsonar.ts.tslint.configPath="tslint.json" -Dsonar.ts.coverage.lcovReportPath="reports/coverage/lcov.info"'
-            sh 'mvn -B sonar:sonar -Dsonar.branch=$BRANCH_NAME'
+                               sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test'
+                               // the argument -Dsonar.branch=$BRANCH_NAME' is optional
+                               sh 'mvn -B sonar:sonar -Dsonar.branch=$BRANCH_NAME'
          }
       }
     }
@@ -30,13 +32,8 @@ pipeline {
         branch 'develop'
       }
       steps {
-        dir('dist') {
-          deleteDir()
-        }
-        dir('reports') {
-          deleteDir()
-        }
         sh 'npm run build-prod'
+        sh 'mvn -B validate deploy'
       }
     }
 
@@ -46,6 +43,7 @@ pipeline {
           branch 'master'
       }
       steps {
+        sh 'npm run build-prod'
         script {
            def releasedPom = releaseMvn()
 
