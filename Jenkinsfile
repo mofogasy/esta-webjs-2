@@ -16,6 +16,7 @@ pipeline {
     stage('Unit Tests') {
       steps {
          sh 'npm install'
+         sh 'npm run lint'
          sh 'npm run clean'
          sh 'npm run test-selenium && npm run e2e-selenium'
          junit '**/reports/*.xml'
