@@ -16,8 +16,8 @@ pipeline {
     stage('Unit Tests') {
       steps {
          sh 'npm install'
-         sh 'npm run lint'
          sh 'npm run clean'
+         sh 'npm run lint'
          sh 'npm run test-selenium && npm run e2e-selenium'
          junit '**/reports/*.xml'
          withSonarQubeEnv('Sonar SBB CFF FFS AG') {
@@ -34,22 +34,22 @@ pipeline {
       }
       steps {
         sh 'npm run build-prod'
-        sh 'mvn -B validate deploy'
+        sh 'mvn -B validate deploy -Dnexus_release_url=REPLACE_WITH_RELEASE_URL -Dnexus_snapshot_url=REPLACE_WITH_SNAPSHOT_URL'
       }
     }
-
 
     stage('When on master, we create a release & deploy') {
       when {
           branch 'master'
       }
-      steps {
+      steps 
         sh 'npm run build-prod'
         script {
            def releasedPom = releaseMvn()
 
            // one cannot easily pass variables from one stage to the next, so combining these operations
-           buildDockerImageSelfRunningJar(targetOsProject:"putHereYourOpenshiftProjectThatHoldsImages", pomVersion: releasedPom.version)
+           buildDockerImage(targetOsProject:"REPLACE_WITH_OS_BUILD_PROJECT", baseImageNamespace: "REPLACE_WITH_BASE_IMAGE", baseImageNameAndTag: "plattform-nginx:1.12.2-01",
+            tag: "latest", ocAppVersion: releasedPom.version)
         }
       }
     }
