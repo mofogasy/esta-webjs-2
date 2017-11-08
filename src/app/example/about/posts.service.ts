@@ -13,7 +13,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class PostsService {
-    readonly ENDPOINT_URL = 'http://jsonplaceholder.typicode.com/posts';
+    readonly ENDPOINT_URL = 'https://jsonplaceholder.typicode.com/posts';
 
     constructor(private http: HttpClient) {
     }
