@@ -7,70 +7,67 @@
  * @version: 2.0.0
  * @since 26.04.2017, 2017.
  */
-import {TestBed} from '@angular/core/testing';
-import {HttpModule, Response, ResponseOptions, XHRBackend} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {async, inject, TestBed} from '@angular/core/testing';
 
 import {PostsService} from './posts.service';
 
 describe('PostsService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpModule],
-            providers: [PostsService,
-                {provide: XHRBackend, useClass: MockBackend}
-            ]
+            imports: [HttpClientModule, HttpClientTestingModule],
+            providers: [PostsService]
         });
     });
 
-    it('returns observable in getAllPosts() ', (done) => {
-        const mockBackend = TestBed.get(XHRBackend);
-        const sut = TestBed.get(PostsService);
-        const responseOptions = new ResponseOptions({
-            body: [{
+    it('returns observable in getAllPosts() ',
+        async(inject([PostsService, HttpTestingController], (sut: PostsService, backend: HttpTestingController) => {
+            // given
+            const response = [{
                 id: 1,
-                msg: 'Hello'
+                msg: 'Hello, I am badman'
             }, {
                 id: 2,
-                msg: 'World'
-            }]
-        });
+                msg: 'Hello, I am the friendly neighborhood spider'
+            }];
 
-        mockBackend.connections.subscribe(connection => {
-            connection.mockRespond(new Response(responseOptions));
-        });
+            // when
+            const obs = sut.getAllPosts();
 
-        const obs = sut.getAllPosts();
+            // then
+            obs.subscribe(actualResponse => {
+                expect(actualResponse).toEqual(response);
+            });
 
-        obs.subscribe(r => {
-            expect(r[0].id).toBe(1);
-            expect(r[0].msg).toBe('Hello');
-            expect(r[1].id).toBe(2);
-            expect(r[1].msg).toBe('World');
-            done();
-        });
-    });
+            backend.expectOne({
+                url: sut.ENDPOINT_URL,
+                method: 'GET'
+            }).flush(response);
+        }))
+    );
 
-    it('returns observable in getPostById(x) ', (done) => {
-        const mockBackend = TestBed.get(XHRBackend);
-        const sut = TestBed.get(PostsService);
-        const responseOptions = new ResponseOptions({
-            body: {
+    it('should return a specific post when we call getPostById',
+        async(inject([PostsService, HttpTestingController], (sut: PostsService, backend: HttpTestingController) => {
+            // given
+            const response = {
                 id: 1,
-                msg: 'Hello'
-            }
-        });
+                msg: 'Hello, I am Batman'
+            };
+            const id = 1;
 
-        mockBackend.connections.subscribe(connection => {
-            connection.mockRespond(new Response(responseOptions));
-        });
+            // when
+            const obs = sut.getPostById(id);
 
-        const obs = sut.getPostById(1);
+            // then
+            obs.subscribe(actualResponse => {
+                expect(actualResponse).toEqual(response);
+            });
 
-        obs.subscribe(r => {
-            expect(r.id).toBe(1);
-            expect(r.msg).toBe('Hello');
-            done();
-        });
-    });
+            backend.expectOne({
+                url: `${sut.ENDPOINT_URL}/${id}`,
+                method: 'GET'
+            }).flush(response);
+        }))
+    );
 });

@@ -8,23 +8,21 @@
  * @since 10.05.2017, 2017.
  */
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import 'rxjs/add/operator/map';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class PostsService {
-    private endpointUrl = 'http://jsonplaceholder.typicode.com/posts';
+    readonly ENDPOINT_URL = 'http://jsonplaceholder.typicode.com/posts';
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
     }
 
-    getAllPosts() {
-        return this.http.get(this.endpointUrl)
-            .map(res => res.json());
+    getAllPosts(): Observable<any> {
+        return this.http.get(this.ENDPOINT_URL);
     }
 
-    getPostById(id) {
-        return this.http.get(this.endpointUrl + '/' + id)
-            .map(res => res.json());
+    getPostById(id): Observable<any> {
+        return this.http.get(`${this.ENDPOINT_URL}/${id}`);
     }
 }
