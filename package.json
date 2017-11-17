@@ -6,14 +6,15 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "lint": "ng lint --type-check",
     "test": "ng test --watch=false",
     "test-selenium": "ng test --progress=false --watch=false --browsers=SeleniumCH,SeleniumFF --code-coverage",
     "e2e": "ng e2e",
     "e2e-selenium": "ng e2e --progress=false --host=0.0.0.0 --disableHostCheck=true --port=$(echo $externalport) --public-host=$(echo $host):$(echo $externalport) --config=protractor.webgrid.conf.js",
-    "prebuild-prod": "npm run test-selenium && npm run e2e-selenium",
-    "build-prod": "ng build --prod --progress=false"
+    "prebuild-prod-ci": "npm run test-selenium && npm run e2e-selenium",
+    "build-prod-ci": "ng build --prod --progress=false",
+    "build-prod-local": "ng build --prod"
   },
   "private": false,
   "dependencies": {
