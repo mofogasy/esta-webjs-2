@@ -31,9 +31,11 @@ import {
 } from 'primeng/primeng';
 import {AboutComponent} from './about/about.component';
 import {ThemeComponent} from './theme/theme.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
     declarations: [
+        HomeComponent,
         AboutComponent,
         ThemeComponent
     ],

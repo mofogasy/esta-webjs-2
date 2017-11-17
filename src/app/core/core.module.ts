@@ -11,20 +11,33 @@ import {CommonModule} from '@angular/common';
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {HomeComponent} from './home/home.component';
 import {throwIfAlreadyLoaded} from './module-import-guard';
 import {NavComponent} from './nav/nav.component';
 import {AuthModule} from 'esta-webjs-extensions';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
         AuthModule,
-        HttpClientModule
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
     ],
-    declarations: [NavComponent, HomeComponent],
+    declarations: [NavComponent],
     exports: [NavComponent]
 })
 export class CoreModule {

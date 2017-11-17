@@ -10,7 +10,7 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AboutComponent} from './example/about/about.component';
-import {HomeComponent} from './core/home/home.component';
+import {HomeComponent} from './example/home/home.component';
 import {ThemeComponent} from './example/theme/theme.component';
 
 export const appRoutes: Routes = [
