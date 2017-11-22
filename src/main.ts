@@ -10,7 +10,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-AuthService.init({}, 'assets/auth-config.json')
+AuthService.init({onLoad: 'check-sso'}, 'assets/auth-config.json')
   .then(() => {
       startAngular();
   })

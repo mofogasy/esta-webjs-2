@@ -1,3 +1,12 @@
+/**
+ * Copyright (C) Schweizerische Bundesbahnen SBB, 2017.
+ *
+ * ESTA WebJS: Interceptor für HTTP Requests
+ *
+ * @author u218609 (Kevin Kreuzer)
+ * @version: 4.4.4
+ * @since 22.11.2017, 2017.
+ */
 import {Injectable} from '@angular/core';
 import {HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse} from '@angular/common/http';
 import {AuthService} from 'esta-webjs-extensions';
