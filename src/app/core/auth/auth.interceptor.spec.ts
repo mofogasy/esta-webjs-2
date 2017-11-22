@@ -9,7 +9,7 @@
  */
 import {AuthInterceptor} from './auth.interceptor';
 import {AuthService} from 'esta-webjs-extensions';
-import {HttpErrorResponse, HttpHandler, HttpHeaders, HttpRequest} from '@angular/common/http';
+import {HttpErrorResponse, HttpHandler, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {HTTP_STATUS_CODE} from './http-status-codes.model';
 
@@ -105,7 +105,35 @@ describe('auth.interceptor', () => {
             const observer = {
                 error: err => {
                     expect(err).toEqual(httpError);
-                    expect(authService.login).toHaveBeenCalled()
+                    expect(authService.login).toHaveBeenCalled();
+                    done();
+                }
+            };
+            intercept$.subscribe(observer);
+        });
+
+        it('must call login on the authService for forbidden requests', done => {
+            // given
+            const request = jasmine.createSpyObj<HttpRequest<any>>('request', ['clone']);
+            const next = jasmine.createSpyObj<HttpHandler>('next', ['handle']);
+            const authHeader = {'Authorization': 'Bearer some token'};
+            const error = {
+                error: 'Something went wrong',
+                status: HTTP_STATUS_CODE.FORBIDDEN
+            };
+            const httpError = new HttpErrorResponse(error);
+
+            next.handle.and.returnValue(Observable.throw(httpError));
+            authService.getAuthHeader.and.returnValue(authHeader);
+
+            // when
+            const intercept$ = sut.intercept(request, next);
+
+            // then
+            const observer = {
+                error: err => {
+                    expect(err).toEqual(httpError);
+                    expect(authService.login).toHaveBeenCalled();
                     done();
                 }
             };
