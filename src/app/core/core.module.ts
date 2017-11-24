@@ -14,11 +14,12 @@ import {RouterModule} from '@angular/router';
 import {throwIfAlreadyLoaded} from './module-import-guard';
 import {NavComponent} from './nav/nav.component';
 import {AuthModule} from 'esta-webjs-extensions';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AuthInterceptor} from './auth/auth.interceptor';
 
-// AoT requires an exported function for factories
+// AOT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
@@ -38,7 +39,14 @@ export function HttpLoaderFactory(http: HttpClient) {
         }),
     ],
     declarations: [NavComponent],
-    exports: [NavComponent]
+    exports: [NavComponent],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+    ]
 })
 export class CoreModule {
 
