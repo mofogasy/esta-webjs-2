@@ -12,6 +12,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {async, inject, TestBed} from '@angular/core/testing';
 
 import {PostsService} from './posts.service';
+import {Post} from './posts.model';
 
 describe('PostsService', () => {
     beforeEach(() => {
@@ -24,19 +25,23 @@ describe('PostsService', () => {
     it('returns observable in getAllPosts() ',
         async(inject([PostsService, HttpTestingController], (sut: PostsService, backend: HttpTestingController) => {
             // given
-            const response = [{
+            const response: Array<Post> = [{
+                userId: 1,
                 id: 1,
-                msg: 'Hello, I am badman'
+                title: 'Hello, I am Batman',
+                body: 'I am a hero that is drives in super fast cars'
             }, {
+                userId: 2,
                 id: 2,
-                msg: 'Hello, I am the friendly neighborhood spider'
+                title: 'Hello, I am Spiderman',
+                body: 'Hello, I am the friendly neighborhood spider'
             }];
 
             // when
             const obs = sut.getAllPosts();
 
             // then
-            obs.subscribe(actualResponse => {
+            obs.subscribe((actualResponse: Array<Post>) => {
                 expect(actualResponse).toEqual(response);
             });
 
@@ -50,11 +55,13 @@ describe('PostsService', () => {
     it('should return a specific post when we call getPostById',
         async(inject([PostsService, HttpTestingController], (sut: PostsService, backend: HttpTestingController) => {
             // given
-            const response = {
-                id: 1,
-                msg: 'Hello, I am Batman'
-            };
             const id = 1;
+            const response: Post = {
+                userId: 1,
+                id,
+                title: 'Hello, I am Batman',
+                body: 'I am a hero that is drives in super fast cars'
+            };
 
             // when
             const obs = sut.getPostById(id);
