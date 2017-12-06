@@ -27,18 +27,31 @@
                 (click)="createMessages()">
         </button>
     </section>
-    <section>
+    <section *ngIf="posts$ | async as posts; else loadingPosts">
         <br>
         <h2>Per Http-Service geladene Posts</h2>
-        <p>Im Viewmodel sind {{ (posts | async)?.length }} Posts vorhanden</p>
+        <p>Im Viewmodel sind {{ posts.length }} Posts vorhanden</p>
 
         <p>Der erste Post hat den Titel:
             <br>
+
             <code>
-                <span *ngIf="posts | async; let posts">{{ posts[0].title }}</span>
+                {{ posts[0].title }}
             </code>
         </p>
-        <p>Der Post mit der Id {{ (postById | async)?.id }} hat den Titel:<br>
-            <code>{{ (postById | async)?.title }}</code></p>
     </section>
+    <ng-template #loadingPosts>
+        <div>Posts werden geladen...</div>
+    </ng-template>
+
+    <section *ngIf="postById$ | async as postById; else loagingPost">
+        <p>Der Post mit der Id {{ postById.id }} hat den
+            Titel:<br>
+            <code>{{ postById.title }}</code>
+        </p>
+    </section>
+    <ng-template #loagingPost>
+        <div>Post mit der id {{SAMPLE_POST_ID}} wird geladen...</div>
+    </ng-template>
+
 </div>

@@ -91,7 +91,7 @@ describe('AboutComponent', () => {
 
     it('onInit should subscribe to PostsService [getAllPosts]', () => {
         component.ngOnInit();
-        component.posts.subscribe((posts: Array<Post>) => {
+        component.posts$.subscribe((posts: Array<Post>) => {
             expect(posts[0].title).toBe('Hello, I am Batman');
             expect(posts[1].title).toBe('Hello, I am Spiderman');
         });
@@ -114,7 +114,7 @@ describe('AboutComponent', () => {
 
     it('onInit should subscribe to PostsService [getPostById]', () => {
         component.ngOnInit();
-        component.postById.subscribe((post: Post) => {
+        component.postById$.subscribe((post: Post) => {
             expect(post.title).toBe('Hello, I am Batman');
         });
     });

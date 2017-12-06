@@ -22,11 +22,11 @@ import {Post} from './posts.model';
 })
 export class AboutComponent implements OnInit {
     public aboutMessage: string;
-    public posts: Observable<Array<Post>>;
-    public postById: Observable<Post>;
+    public posts$: Observable<Array<Post>>;
+    public postById$: Observable<Post>;
     public messages: Array<Message> = [];
 
-    private readonly SAMPLE_POST_ID = 40;
+    public readonly SAMPLE_POST_ID = 40;
 
     constructor(private postsService: PostsService,
                 private translateService: TranslateService) {
@@ -35,8 +35,8 @@ export class AboutComponent implements OnInit {
     }
 
     ngOnInit(): any {
-        this.posts = this.postsService.getAllPosts();
-        this.postById = this.postsService.getPostById(this.SAMPLE_POST_ID);
+        this.posts$ = this.postsService.getAllPosts();
+        this.postById$ = this.postsService.getPostById(this.SAMPLE_POST_ID);
     }
 
     createMessages() {
