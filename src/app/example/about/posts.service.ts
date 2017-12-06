@@ -10,6 +10,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import {Post} from './posts.model';
 
 @Injectable()
 export class PostsService {
@@ -18,11 +19,11 @@ export class PostsService {
     constructor(private http: HttpClient) {
     }
 
-    getAllPosts(): Observable<any> {
+    getAllPosts(): Observable<Array<Post>> {
         return this.http.get(this.ENDPOINT_URL);
     }
 
-    getPostById(id): Observable<any> {
+    getPostById(id): Observable<Post> {
         return this.http.get(`${this.ENDPOINT_URL}/${id}`);
     }
 }

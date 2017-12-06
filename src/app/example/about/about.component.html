@@ -1,40 +1,44 @@
 <div class="jumbotron">
-  <p-growl [(value)]="messages" sticky="sticky"></p-growl>
-  <h1>{{ aboutMessage }}
-    <small>Eine Demoseite</small>
-  </h1>
-  <section>
-    <h2 id="about-title">{{ 'ABOUT.TITLE' | translate }}</h2>
-    <p id="about-subtitle">{{ 'ABOUT.SUBTITLE' | translate }}</p>
-    <button id="change-to-german-button"
-            pButton
-            type="button"
-            class="ui-button-primary"
-            label="{{ 'ABOUT.GERMAN' | translate }}"
-            (click)="changeLanguage('de')">
-    </button>
-    <button id="change-to-english-button"
-            pButton
-            type="button"
-            class="ui-button-secondary"
-            label="{{ 'ABOUT.ENGLISH' | translate }}"
-            (click)="changeLanguage('en')">
-    </button>
-    <button pButton
-            type="button"
-            class="ui-button-secondary"
-            label="{{ 'ABOUT.NOTIFICATIONS' | translate }}"
-            (click)="createMessages()">
-    </button>
-  </section>
-  <section>
-    <br>
-    <h2>Per Http-Service geladene Posts</h2>
-    <p>Im Viewmodel sind {{ posts?.length }} Posts vorhanden</p>
+    <p-growl [(value)]="messages" sticky="sticky"></p-growl>
+    <h1>{{ aboutMessage }}
+        <small>Eine Demoseite</small>
+    </h1>
+    <section>
+        <h2 id="about-title">{{ 'ABOUT.TITLE' | translate }}</h2>
+        <p id="about-subtitle">{{ 'ABOUT.SUBTITLE' | translate }}</p>
+        <button id="change-to-german-button"
+                pButton
+                type="button"
+                class="ui-button-primary"
+                label="{{ 'ABOUT.GERMAN' | translate }}"
+                (click)="changeLanguage('de')">
+        </button>
+        <button id="change-to-english-button"
+                pButton
+                type="button"
+                class="ui-button-secondary"
+                label="{{ 'ABOUT.ENGLISH' | translate }}"
+                (click)="changeLanguage('en')">
+        </button>
+        <button pButton
+                type="button"
+                class="ui-button-secondary"
+                label="{{ 'ABOUT.NOTIFICATIONS' | translate }}"
+                (click)="createMessages()">
+        </button>
+    </section>
+    <section>
+        <br>
+        <h2>Per Http-Service geladene Posts</h2>
+        <p>Im Viewmodel sind {{ (posts | async)?.length }} Posts vorhanden</p>
 
-    <p>Der erste Post hat den Titel: <br><code>{{ posts ? posts[0].title : '' }}</code>
-    </p>
-    <p>Der Post mit der Id {{ postById?.id }} hat den Titel:<br>
-      <code>{{ postById?.title }}</code></p>
-  </section>
+        <p>Der erste Post hat den Titel:
+            <br>
+            <code>
+                <span *ngIf="posts | async; let posts">{{ posts[0].title }}</span>
+            </code>
+        </p>
+        <p>Der Post mit der Id {{ (postById | async)?.id }} hat den Titel:<br>
+            <code>{{ (postById | async)?.title }}</code></p>
+    </section>
 </div>

@@ -16,6 +16,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {AboutComponent} from './about.component';
 import {PostsService} from './posts.service';
+import {Post} from './posts.model';
 
 @Pipe({name: 'translate'})
 class MockPipe implements PipeTransform {
@@ -34,25 +35,27 @@ describe('AboutComponent', () => {
     }
 
     class MockPostsService {
-        public getAllPosts() {
-            return Observable.of([
-                {
-                    id: 26,
-                    title: 'hi 1',
-                },
-                {
-                    id: 27,
-                    title: 'hi 2',
-                }
-            ]);
+        public getAllPosts(): Observable<Array<Post>> {
+            return Observable.of([{
+                userId: 1,
+                id: 1,
+                title: 'Hello, I am Batman',
+                body: 'I am a hero that is drives in super fast cars'
+            }, {
+                userId: 2,
+                id: 2,
+                title: 'Hello, I am Spiderman',
+                body: 'Hello, I am the friendly neighborhood spider'
+            }]);
         }
 
-        public getPostById(id) {
-            return Observable.of(
-                {
-                    id: id,
-                    title: 'hi 4',
-                });
+        public getPostById(id): Observable<Post> {
+            return Observable.of({
+                userId: 1,
+                id: 1,
+                title: 'Hello, I am Batman',
+                body: 'I am a hero that is drives in super fast cars'
+            });
         }
     }
 
@@ -88,9 +91,10 @@ describe('AboutComponent', () => {
 
     it('onInit should subscribe to PostsService [getAllPosts]', () => {
         component.ngOnInit();
-        expect(component.posts.length).toBe(2);
-        expect(component.posts[0].title).toBe('hi 1');
-        expect(component.posts[1].title).toBe('hi 2');
+        component.posts.subscribe((posts: Array<Post>) => {
+            expect(posts[0].title).toBe('Hello, I am Batman');
+            expect(posts[1].title).toBe('Hello, I am Spiderman');
+        });
     });
 
     it('should push three messages to the message opject', () => {
@@ -110,7 +114,9 @@ describe('AboutComponent', () => {
 
     it('onInit should subscribe to PostsService [getPostById]', () => {
         component.ngOnInit();
-        expect(component.postById.title).toBe('hi 4');
+        component.postById.subscribe((post: Post) => {
+            expect(post.title).toBe('Hello, I am Batman');
+        });
     });
 
     it('should call the translationService to change the language',
