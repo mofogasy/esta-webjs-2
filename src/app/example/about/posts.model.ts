@@ -7,7 +7,7 @@
  * @version: 2.0.0
  * @since 10.05.2017, 2017.
  */
-export interface Post{
+export interface Post {
     userId: number;
     id: number;
     title: string;
