@@ -44,13 +44,13 @@
         <div>Posts werden geladen...</div>
     </ng-template>
 
-    <section *ngIf="postById$ | async as postById; else loagingPostById">
+    <section *ngIf="postById$ | async as postById; else loadingPostById">
         <p>Der Post mit der Id {{ postById.id }} hat den
             Titel:<br>
             <code>{{ postById.title }}</code>
         </p>
     </section>
-    <ng-template #loagingPostById>
+    <ng-template #loadingPostById>
         <div>Post mit der id {{SAMPLE_POST_ID}} wird geladen...</div>
     </ng-template>
 
