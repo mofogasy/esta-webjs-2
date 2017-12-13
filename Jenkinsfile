@@ -6,7 +6,7 @@
 @Library(['github.com/SchweizerischeBundesbahnen/jenkins-pipeline-helper@master', 'wzu-pipeline-helper']) _
 
 pipeline {
-   agent { label 'java' }
+   agent { label 'nodejs' }
    tools {
        maven 'Apache Maven 3.3'
        jdk 'OpenJDK 1.8 64-Bit'
@@ -33,7 +33,7 @@ pipeline {
         branch 'develop'
       }
       steps {
-        sh 'npm run build-prod'
+        sh 'npm run build-prod-ci'
         sh 'mvn -B validate deploy -Dnexus_release_url=REPLACE_WITH_RELEASE_URL -Dnexus_snapshot_url=REPLACE_WITH_SNAPSHOT_URL'
       }
     }
@@ -43,7 +43,7 @@ pipeline {
           branch 'master'
       }
       steps 
-        sh 'npm run build-prod'
+        sh 'npm run build-prod-ci'
         script {
            def releasedPom = releaseMvn()
 
