@@ -10,7 +10,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
 import {
@@ -21,7 +20,7 @@ import {
     DropdownModule,
     FieldsetModule,
     GrowlModule,
-    InputMaskModule, InputSwitch, InputSwitchModule, InputTextModule, ListboxModule, MenubarModule,
+    InputMaskModule, InputSwitchModule, InputTextModule, ListboxModule, MenubarModule,
     MessagesModule, MultiSelectModule, PaginatorModule,
     PanelModule, ProgressBarModule,
     RadioButtonModule,
@@ -32,15 +31,16 @@ import {
 } from 'primeng/primeng';
 import {AboutComponent} from './about/about.component';
 import {ThemeComponent} from './theme/theme.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
     declarations: [
+        HomeComponent,
         AboutComponent,
         ThemeComponent
     ],
     imports: [
         CommonModule,
-        HttpModule,
         FormsModule,
         ReactiveFormsModule,
         TranslateModule,
