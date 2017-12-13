@@ -31,7 +31,7 @@
     "@ngx-translate/http-loader": "=2.0.0",
     "bootstrap": "=4.0.0-beta.2",
     "core-js": "=2.5.1",
-    "esta-webjs-extensions": "=1.1.5",
+    "esta-webjs-extensions": "file:../esta-webjs-extensions-2.0.0.tgz",
     "font-awesome": "=4.7.0",
     "jquery": "=3.2.1",
     "popper.js": "=1.12.5",

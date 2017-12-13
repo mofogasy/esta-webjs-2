@@ -4,5 +4,10 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    authConfig: {
+        realm: 'SBB_Public',
+        url: 'https://sso-dev.sbb.ch/auth',
+        clientId: 'devportal-dev'
+    }
 };
