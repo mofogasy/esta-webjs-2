@@ -1,7 +1,7 @@
 {
   "name": "webjs-starterkit",
   "description": "This is a starterkit based on angular-cli with enterprise extensions",
-  "version": "4.4.4-SNAPSHOT",
+  "version": "5.1.0-SNAPSHOT",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -31,7 +31,7 @@
     "@ngx-translate/http-loader": "=2.0.0",
     "bootstrap": "=4.0.0-beta.2",
     "core-js": "=2.5.1",
-    "esta-webjs-extensions": "file:../esta-webjs-extensions-2.0.0.tgz",
+    "esta-webjs-extensions": "=2.0.0",
     "font-awesome": "=4.7.0",
     "jquery": "=3.2.1",
     "popper.js": "=1.12.5",
