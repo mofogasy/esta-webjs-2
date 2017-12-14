@@ -8,32 +8,33 @@
  * @since 28.04.2017, 2017.
  */
 import {Component} from '@angular/core';
-import {AuthService, KeycloakProfile} from 'esta-webjs-extensions';
+import {AuthService} from 'esta-webjs-extensions';
 import {Observable} from 'rxjs/Observable';
+import {KeycloakProfile} from 'keycloak-js';
 
 interface NavItem {
-  displayName: string;
-  routerLink: string;
+    displayName: string;
+    routerLink: string;
 }
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './nav.component.html'
+    selector: 'app-navbar',
+    templateUrl: './nav.component.html'
 })
 export class NavComponent {
 
-  public navItems: Array<NavItem> = [
-    {displayName: 'Home', routerLink: 'home'},
-    {displayName: 'About', routerLink: 'about'},
-    {displayName: 'Theme', routerLink: 'theme'}
-  ];
+    public navItems: Array<NavItem> = [
+        {displayName: 'Home', routerLink: 'home'},
+        {displayName: 'About', routerLink: 'about'},
+        {displayName: 'Theme', routerLink: 'theme'}
+    ];
 
-  public userInfo: Observable<KeycloakProfile>;
+    public userInfo: Observable<KeycloakProfile>;
 
-  public isCollapsed = true;
+    public isCollapsed = true;
 
-  constructor(public authService: AuthService) {
-    this.userInfo = this.authService.getUserInfo();
-  }
+    constructor(public authService: AuthService) {
+        this.userInfo = this.authService.getUserInfo();
+    }
 
 }

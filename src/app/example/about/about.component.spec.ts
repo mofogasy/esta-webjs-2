@@ -11,12 +11,12 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {ButtonModule, GrowlModule, Message} from 'primeng/primeng';
-import 'rxjs/add/observable/of';
 import {Observable} from 'rxjs/Observable';
 
 import {AboutComponent} from './about.component';
 import {PostsService} from './posts.service';
 import {Post} from './posts.model';
+import {of} from 'rxjs/observable/of';
 
 @Pipe({name: 'translate'})
 class MockPipe implements PipeTransform {
@@ -36,7 +36,7 @@ describe('AboutComponent', () => {
 
     class MockPostsService {
         public getAllPosts(): Observable<Array<Post>> {
-            return Observable.of([{
+            return of([{
                 userId: 1,
                 id: 1,
                 title: 'Hello, I am Batman',
@@ -50,7 +50,7 @@ describe('AboutComponent', () => {
         }
 
         public getPostById(id): Observable<Post> {
-            return Observable.of({
+            return of({
                 userId: 1,
                 id: 1,
                 title: 'Hello, I am Batman',

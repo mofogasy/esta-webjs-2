@@ -20,10 +20,10 @@ export class PostsService {
     }
 
     getAllPosts(): Observable<Array<Post>> {
-        return this.http.get(this.ENDPOINT_URL);
+        return this.http.get<Array<Post>>(this.ENDPOINT_URL);
     }
 
     getPostById(id): Observable<Post> {
-        return this.http.get(`${this.ENDPOINT_URL}/${id}`);
+        return this.http.get<Post>(`${this.ENDPOINT_URL}/${id}`);
     }
 }
