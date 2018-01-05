@@ -28,7 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     imports: [
         CommonModule,
         RouterModule,
-        AuthModule.forRoot(environment.authConfig),
+        AuthModule.forRoot(environment.authConfig, environment.authOptions),
         HttpClientModule,
         TranslateModule.forRoot({
             loader: {
