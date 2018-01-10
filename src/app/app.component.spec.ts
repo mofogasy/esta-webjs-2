@@ -13,7 +13,9 @@ import {TranslateService} from '@ngx-translate/core';
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {Observable} from 'rxjs/Observable';
-import {AuthService, KeycloakProfile} from 'esta-webjs-extensions';
+import {AuthService} from 'esta-webjs-extensions';
+import {of} from 'rxjs/observable/of';
+import {KeycloakProfile} from 'keycloak-js';
 
 describe('AppComponent', () => {
     beforeEach(() => {
@@ -32,7 +34,7 @@ describe('AppComponent', () => {
             }
 
             public getUserInfo(): Observable<KeycloakProfile> {
-                return Observable.of({
+                return of({
                     id: 'user',
                     username: 'test',
                     email: 'test@xx.com',
@@ -42,7 +44,7 @@ describe('AppComponent', () => {
                     emailVerified: true,
                     totp: true,
                     createdTimestamp: 1
-                })
+                });
             }
         }
 

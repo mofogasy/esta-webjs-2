@@ -12,6 +12,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {Message} from 'primeng/primeng';
 
 import {PostsService} from './posts.service';
+import {Observable} from 'rxjs/Observable';
+import {Post} from './posts.model';
 
 @Component({
     selector: 'app-about',
@@ -19,10 +21,12 @@ import {PostsService} from './posts.service';
     providers: [PostsService]
 })
 export class AboutComponent implements OnInit {
-    aboutMessage: string;
-    posts: any[];
-    postById: any;
-    messages: Array<Message> = [];
+    public aboutMessage: string;
+    public posts$: Observable<Array<Post>>;
+    public postById$: Observable<Post>;
+    public messages: Array<Message> = [];
+
+    public readonly SAMPLE_POST_ID = 40;
 
     constructor(private postsService: PostsService,
                 private translateService: TranslateService) {
@@ -31,8 +35,8 @@ export class AboutComponent implements OnInit {
     }
 
     ngOnInit(): any {
-        this.postsService.getAllPosts().subscribe(posts => this.posts = posts);
-        this.postsService.getPostById(40).subscribe(post => this.postById = post);
+        this.posts$ = this.postsService.getAllPosts();
+        this.postById$ = this.postsService.getPostById(this.SAMPLE_POST_ID);
     }
 
     createMessages() {

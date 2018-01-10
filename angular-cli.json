@@ -30,6 +30,7 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+        "e2e": "environments/environment.e2e.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
@@ -41,13 +42,16 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json"
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "e2e/tsconfig.e2e.json"
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {
@@ -56,29 +60,7 @@
     }
   },
   "defaults": {
-    "styleExt": "scss",
-    "component": {
-      "spec": false,
-      "inlineStyle": true,
-      "inlineTemplate": true
-    },
-    "directive": {
-      "spec": false
-    },
-    "class": {
-      "spec": false
-    },
-    "guard": {
-      "spec": false
-    },
-    "module": {
-      "spec": false
-    },
-    "pipe": {
-      "spec": false
-    },
-    "service": {
-      "spec": false
-    }
+    "styleExt": "css",
+    "component": {}
   }
 }

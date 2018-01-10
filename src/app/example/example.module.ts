@@ -10,37 +10,37 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
 import {
     AccordionModule,
     BreadcrumbModule,
-    ButtonModule,
+    ButtonModule, CalendarModule, CheckboxModule, ConfirmationService, ConfirmDialogModule,
     DataTableModule,
     DropdownModule,
     FieldsetModule,
     GrowlModule,
-    InputMaskModule,
-    MessagesModule,
-    PanelModule,
+    InputMaskModule, InputSwitchModule, InputTextModule, ListboxModule, MenubarModule,
+    MessagesModule, MultiSelectModule, PaginatorModule,
+    PanelModule, ProgressBarModule,
     RadioButtonModule,
     SelectButtonModule,
-    SharedModule,
-    SplitButtonModule,
+    SharedModule, SliderModule, SpinnerModule,
+    SplitButtonModule, StepsModule, TabViewModule,
     ToggleButtonModule
 } from 'primeng/primeng';
 import {AboutComponent} from './about/about.component';
 import {ThemeComponent} from './theme/theme.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
     declarations: [
+        HomeComponent,
         AboutComponent,
         ThemeComponent
     ],
     imports: [
         CommonModule,
-        HttpModule,
         FormsModule,
         ReactiveFormsModule,
         TranslateModule,
@@ -59,8 +59,23 @@ import {ThemeComponent} from './theme/theme.component';
         SharedModule,
         MessagesModule,
         GrowlModule,
-        PanelModule
-    ]
+        PanelModule,
+        CheckboxModule,
+        CalendarModule,
+        InputSwitchModule,
+        SpinnerModule,
+        InputTextModule,
+        ListboxModule,
+        MultiSelectModule,
+        SliderModule,
+        PaginatorModule,
+        TabViewModule,
+        ConfirmDialogModule,
+        StepsModule,
+        MenubarModule,
+        ProgressBarModule
+    ],
+    providers: [ConfirmationService]
 })
 export class ExampleModule {
 }

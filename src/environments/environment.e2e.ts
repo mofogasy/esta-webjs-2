@@ -1,7 +1,7 @@
 /**
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2017.
  *
- * ESTA WebJS 2: Environment for production
+ * ESTA WebJS 2: Environment for e2e tests
  *
  * @author u218609 (Kevin Kreuzer)
  * @version: 5.1.0
@@ -11,7 +11,8 @@ import {KeycloakInitOptions} from 'keycloak-js';
 import {KeycloakConfig} from 'esta-webjs-extensions';
 import {Environment} from './environment.model';
 
-const authOptions: KeycloakInitOptions = {onLoad: 'check-sso'};
+// Needs to be empty for e2e test
+const authOptions: KeycloakInitOptions = {};
 const authConfig: KeycloakConfig = {
     realm: 'YOUR_REALM',
     url: 'https://YOUR_SERVER.com/auth',
@@ -19,7 +20,7 @@ const authConfig: KeycloakConfig = {
 };
 
 export const environment: Environment = {
-    production: true,
+    production: false,
     authConfig,
     authOptions
 };
