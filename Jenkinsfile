@@ -5,19 +5,28 @@
 // loading libraries for common tasks
 @Library(['github.com/SchweizerischeBundesbahnen/jenkins-pipeline-helper@master', 'wzu-pipeline-helper']) _
 
+String cron_string = BRANCH_NAME == "develop" ? "@midnight" : ""
+
 pipeline {
    agent { label 'nodejs' }
+
+   triggers { cron(cron_string) }
+
    tools {
        maven 'Apache Maven 3.3'
        jdk 'OpenJDK 1.8 64-Bit'
    }
 
    stages {
-    stage('Unit Tests') {
-      steps {
+
+    stage('Prepare') {
          sh 'npm install'
          sh 'npm run clean'
          sh 'npm run lint'
+    }
+
+    stage('Unit Tests') {
+      steps {
          sh 'npm run test-selenium'
          // Use this as soon as you have adjusted environment.e2e.ts with your authconfig
          // sh 'npm run test-selenium && npm run e2e-selenium'
@@ -56,4 +65,3 @@ pipeline {
       }
     }
   }
-}
