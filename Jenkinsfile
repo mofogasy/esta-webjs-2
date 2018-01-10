@@ -53,7 +53,7 @@ pipeline {
       when {
           branch 'master'
       }
-      steps 
+      steps {
         sh 'npm run build-prod-ci'
         script {
            def releasedPom = releaseMvn()
@@ -65,3 +65,4 @@ pipeline {
       }
     }
   }
+}
