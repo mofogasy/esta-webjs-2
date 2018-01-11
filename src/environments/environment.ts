@@ -15,7 +15,7 @@ import {KeycloakInitOptions} from 'keycloak-js';
 import {KeycloakConfig} from 'esta-webjs-extensions';
 import {Environment} from './environment.model';
 
-const authOptions: KeycloakInitOptions = {onLoad: 'check-sso'};
+const authOptions: KeycloakInitOptions = {};
 const authConfig: KeycloakConfig = {
     realm: 'YOUR_REALM',
     url: 'https://YOUR_SERVER.com/auth',
