@@ -40,4 +40,7 @@ Enter your own data. Also Version and Authors...
 ```
 
 ### docker/Dockerfile
-Change all the names and the point where your artifacts come from 
+Change all the names and the point where your artifacts come from
+
+### Environments
+Adjust the files in app environments with your personal auth configuration
