@@ -9,7 +9,7 @@
  */
 import {Component} from '@angular/core';
 import {AuthService} from 'esta-webjs-extensions';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {KeycloakProfile} from 'keycloak-js';
 
 interface NavItem {

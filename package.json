@@ -27,17 +27,18 @@
     "@angular/platform-browser": "=6.0.3",
     "@angular/platform-browser-dynamic": "=6.0.3",
     "@angular/router": "=6.0.3",
-    "core-js": "=2.5.7",
-    "rxjs": "=6.2.0",
-    "zone.js": "=0.8.26",
     "@ngx-translate/core": "=10.0.2",
     "@ngx-translate/http-loader": "=3.0.1",
     "bootstrap": "=4.1.1",
-    "esta-webjs-extensions": "=2.0.1",
+    "core-js": "=2.5.7",
+    "esta-webjs-extensions": "file:../esta-webjs-extensions/dist/esta-webjs-extensions-2.1.0.tgz",
     "font-awesome": "=4.7.0",
     "jquery": "=3.3.1",
+    "node-sass": "^4.9.0",
     "popper.js": "=1.14.3",
-    "primeng": "=5.2.7"
+    "primeng": "=6.0.0-alpha.1",
+    "rxjs": "=6.2.0",
+    "zone.js": "=0.8.26"
   },
   "devDependencies": {
     "@angular/compiler-cli": "=6.0.3",
@@ -66,7 +67,8 @@
     "karma-webdriver-launcher": "=1.0.5",
     "my-local-ip": "=1.0.0",
     "nightmare": "=3.0.1",
-    "rimraf": "=2.6.2"
+    "rimraf": "=2.6.2",
+    "node-sass": "^4.9.0"
   },
   "keywords": [
     "esta-webjs-starterkit",

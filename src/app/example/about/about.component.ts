@@ -12,7 +12,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Message} from 'primeng/primeng';
 
 import {PostsService} from './posts.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Post} from './posts.model';
 
 @Component({

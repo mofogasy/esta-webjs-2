@@ -12,15 +12,15 @@ import {KeycloakConfig} from 'esta-webjs-extensions';
 import {Environment} from './environment.model';
 
 // Needs to be empty for e2e test
-const authOptions: KeycloakInitOptions = {};
+const authOptions: KeycloakInitOptions = {flow: 'implicit'};
 const authConfig: KeycloakConfig = {
-    realm: 'YOUR_REALM',
-    url: 'https://YOUR_SERVER.com/auth',
-    clientId: 'YOUR_CLIENT_ID'
+  realm: 'YOUR_REALM',
+  url: 'https://YOUR_SERVER.com/auth',
+  clientId: 'YOUR_CLIENT_ID'
 };
 
 export const environment: Environment = {
-    production: false,
-    authConfig,
-    authOptions
+  production: false,
+  authConfig,
+  authOptions
 };
