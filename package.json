@@ -8,7 +8,7 @@
     "ng": "ng",
     "clean": "rimraf dist reports",
     "start": "ng serve -o --aot",
-    "lint": "ng lint --type-check",
+    "lint": "ng lint esta-webjs-2-starterkit --type-check",
     "test": "ng test --watch=false",
     "test-selenium": "ng test --progress=false --watch=false --browsers=SeleniumCH,SeleniumFF --code-coverage",
     "e2e-local": "ng e2e --environment=e2e",

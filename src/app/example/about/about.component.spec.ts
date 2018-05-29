@@ -11,12 +11,11 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {ButtonModule, GrowlModule, Message} from 'primeng/primeng';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 
 import {AboutComponent} from './about.component';
 import {PostsService} from './posts.service';
 import {Post} from './posts.model';
-import {of} from 'rxjs/observable/of';
 
 @Pipe({name: 'translate'})
 class MockPipe implements PipeTransform {

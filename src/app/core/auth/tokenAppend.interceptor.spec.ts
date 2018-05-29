@@ -10,7 +10,7 @@
 import {TokenAppendInterceptor} from './tokenAppend.interceptor';
 import {AuthService} from 'esta-webjs-extensions';
 import {HttpHandler, HttpHeaders, HttpRequest} from '@angular/common/http';
-import {never} from 'rxjs/observable/never';
+import {NEVER} from "rxjs/index";
 
 describe('TokenAppendInterceptor', () => {
 
@@ -31,7 +31,7 @@ describe('TokenAppendInterceptor', () => {
             const authToken = '324445-231456-23456-12345';
             const authHeader = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
 
-            next.handle.and.returnValue(never());
+            next.handle.and.returnValue(NEVER);
             authService.getAuthHeader.and.returnValue(authHeader);
 
             // when
