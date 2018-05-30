@@ -10,7 +10,7 @@ module.exports = function (config) {
 
   config.set({
     hostname: process.env.host || require('my-local-ip')(),
-    basePath: '',
+    basePath: '../',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
@@ -37,7 +37,7 @@ module.exports = function (config) {
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
       ? ['progress', 'coverage-istanbul', 'junit']
-      : ['progress', 'kjhtml'],
+      : ['progress', 'kjhtml', 'junit'],
     port: process.env.externalport || 9876,
     colors: true,
     logLevel: config.LOG_INFO,
