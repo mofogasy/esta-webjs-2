@@ -89,11 +89,6 @@
             "host": "0.0.0.0",
             "port": "PORT_VARIABLE",
             "progress": false
-          },
-          "configurations": {
-            "e2e": {
-              "browserTarget": "webjs-starterkit:build:e2e"
-            }
           }
         },
         "extract-i18n": {
