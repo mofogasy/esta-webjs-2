@@ -1,9 +1,5 @@
-String cron_string = BRANCH_NAME == "develop" ? "@midnight" : ""
-
 pipeline {
   agent { label 'nodejs' }
-
-  triggers { cron(cron_string) }
 
   tools {
     maven 'Apache Maven 3.3'
@@ -13,9 +9,11 @@ pipeline {
   stages {
 
     stage('Prepare') {
-      sh 'npm install'
-      sh 'npm run clean'
-      sh 'npm run lint'
+      steps {
+        sh 'npm install'
+        sh 'npm run clean'
+        sh 'npm run lint'
+      }
     }
 
     stage('Unit Tests') {
