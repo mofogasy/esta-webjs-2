@@ -10,7 +10,7 @@
 import {TokenAppendInterceptor} from './tokenAppend.interceptor';
 import {AuthService} from 'esta-webjs-extensions';
 import {HttpHandler, HttpHeaders, HttpRequest} from '@angular/common/http';
-import {NEVER} from "rxjs/index";
+import {NEVER} from 'rxjs/index';
 
 describe('TokenAppendInterceptor', () => {
 
