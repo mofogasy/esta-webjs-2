@@ -18,9 +18,10 @@ pipeline {
 
     stage('Unit Tests') {
       steps {
-        sh 'npm run test-selenium'
-        // Use this as soon as you have adjusted environment.e2e.ts with your authconfig
+        // Use this as soon as you have adjusted environment.ts with your authconfig
         // sh 'npm run test-selenium && npm run e2e-selenium'
+        sh 'npm run test-selenium'
+
         junit '**/reports/*.xml'
         withSonarQubeEnv('Sonar SBB CFF FFS AG') {
           sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test'

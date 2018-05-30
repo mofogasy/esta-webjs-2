@@ -17,9 +17,9 @@ import {Environment} from './environment.model';
 
 const authOptions: KeycloakInitOptions = {flow: 'implicit'};
 const authConfig: KeycloakConfig = {
-  'realm': 'SBB_Public',
-  'url': 'https://sso-dev.sbb.ch/auth',
-  'clientId': 'client-esta-webjs-frontend-dev'
+  realm: 'YOUR_REALM',
+  url: 'https://YOUR_SERVER.com/auth',
+  clientId: 'YOUR_CLIENT_ID'
 };
 
 export const environment: Environment = {
