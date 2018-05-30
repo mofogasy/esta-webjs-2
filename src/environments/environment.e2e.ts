@@ -11,12 +11,11 @@ import {KeycloakInitOptions} from 'keycloak-js';
 import {KeycloakConfig} from 'esta-webjs-extensions';
 import {Environment} from './environment.model';
 
-// Needs to be empty for e2e test
 const authOptions: KeycloakInitOptions = {flow: 'implicit'};
 const authConfig: KeycloakConfig = {
-  realm: 'YOUR_REALM',
-  url: 'https://YOUR_SERVER.com/auth',
-  clientId: 'YOUR_CLIENT_ID'
+  'realm': 'SBB_Public',
+  'url': 'https://sso-dev.sbb.ch/auth',
+  'clientId': 'client-esta-webjs-frontend-dev'
 };
 
 export const environment: Environment = {
