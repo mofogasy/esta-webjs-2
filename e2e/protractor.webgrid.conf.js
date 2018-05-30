@@ -11,7 +11,7 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
-  capabilities: [
+  multiCapabilities: [
     {
       browserName: 'chrome'
     },
