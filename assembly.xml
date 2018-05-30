@@ -6,7 +6,7 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
-            <directory>dist/esta-webjs-2-starterkit</directory>
+            <directory>dist/webjs-starterkit</directory>
             <outputDirectory>dist</outputDirectory>
         </fileSet>
     </fileSets>
