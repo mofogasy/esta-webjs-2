@@ -19,7 +19,6 @@ exports.config = {
       browserName: 'firefox'
     }
   ],
-  directConnect: true,
   baseUrl: 'http://' + hostname + ':' + externalport,
   seleniumAddress: 'http://webtestgrid.sbb.ch:4444/wd/hub',
   framework: 'jasmine',
