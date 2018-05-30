@@ -63,6 +63,21 @@
             }
           }
         },
+        "serve-e2e-ci": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "webjs-starterkit:build",
+            "disableHostCheck": true,
+            "publicHost": "PUBLIC_HOST_VARIABLE",
+            "host": "0.0.0.0",
+            "port": "PORT_VARIABLE"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "webjs-starterkit:build:production"
+            }
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
