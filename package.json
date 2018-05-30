@@ -12,7 +12,7 @@
     "test": "ng test --watch=false",
     "test-selenium": "ng test --progress=false --watch=false --browsers=SeleniumCH,SeleniumFF --code-coverage",
     "e2e-local": "ng e2e",
-    "pree2e-selenium": "cp e2e/protractor.webgrid.conf.js e2e/protractor.conf.js; sed -i \"s/\"PORT_VARIABLE\"/$(echo $externalport)/g\" angular.json; sed -i \"s/PUBLIC_HOST_VARIABLE/$(echo $host):$(echo $externalport)/g\" angular.json",
+    "pree2e-selenium": "cp e2e/protractor.webgrid.conf.js e2e/protractor.conf.js; cat e2e/protractor.conf.js; sed -i \"s/\"PORT_VARIABLE\"/$(echo $externalport)/g\" angular.json; sed -i \"s/PUBLIC_HOST_VARIABLE/$(echo $host):$(echo $externalport)/g\" angular.json",
     "e2e-selenium": "ng e2e --dev-server-target=webjs-starterkit:serve-e2e-ci",
     "build-prod-local": "ng build --prod",
     "build-prod-ci": "ng build --prod --progress=false"
