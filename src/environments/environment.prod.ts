@@ -11,15 +11,15 @@ import {KeycloakInitOptions} from 'keycloak-js';
 import {KeycloakConfig} from 'esta-webjs-extensions';
 import {Environment} from './environment.model';
 
-const authOptions: KeycloakInitOptions = {onLoad: 'check-sso'};
+const authOptions: KeycloakInitOptions = {onLoad: 'check-sso', flow: 'implicit'};
 const authConfig: KeycloakConfig = {
-    realm: 'YOUR_REALM',
-    url: 'https://YOUR_SERVER.com/auth',
-    clientId: 'YOUR_CLIENT_ID'
+  realm: 'YOUR_REALM',
+  url: 'https://YOUR_SERVER.com',
+  clientId: 'YOUR_CLIENT_ID'
 };
 
 export const environment: Environment = {
-    production: true,
-    authConfig,
-    authOptions
+  production: true,
+  authConfig,
+  authOptions
 };

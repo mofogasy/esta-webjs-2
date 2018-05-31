@@ -20,7 +20,7 @@ export class HomeComponent {
 
     constructor() {
         this.title = 'ESTA WebJS 2';
-        this.subtitle = 'Starterkit mit AngularJS 2';
+        this.subtitle = 'Starterkit mit Angular';
         this.welcomeMessage = 'Herzlich Willkommen';
     }
 }

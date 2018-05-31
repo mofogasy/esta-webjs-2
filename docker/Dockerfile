@@ -1,9 +1,9 @@
-# Dockerfile for ESTA WebJS
-FROM set_from_openshift # Wird von Openshift gesetzt
+# Dockerfile for ESTA Web
+FROM PATH_TO_NGINX_IMAGE
 MAINTAINER Reto Lehmann <reto.lehmann@sbb.ch>
 
 # Download sources from Repository
-ADD "http://repo.sbb.ch/service/local/artifact/maven/redirect?r=mirror&g=ch.sbb.esta.webjs&a=esta-webjs-2-starterkit&v=$VERSION&p=tar.gz" esta-webjs-2-starterkit.tar.gz
+ADD "PATH_TO_ARTIFACTORY_TAR.GZ" esta-webjs-2-starterkit.tar.gz
 
 # Extract and move to nginx html folder
 RUN tar -xzf esta-webjs-2-starterkit.tar.gz

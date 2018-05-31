@@ -32,7 +32,7 @@ describe('HomeComponent', () => {
     });
 
     it('has a name property [subtitle]', () => {
-        expect(component.subtitle).toBe('Starterkit mit AngularJS 2');
+        expect(component.subtitle).toBe('Starterkit mit Angular');
     });
 
     it('has a name property [welcomeMessage]', () => {

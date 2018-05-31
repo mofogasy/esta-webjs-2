@@ -12,9 +12,8 @@ import {RouterModule} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 import {AuthService} from 'esta-webjs-extensions';
-import {of} from 'rxjs/observable/of';
 import {KeycloakProfile} from 'keycloak-js';
 
 describe('AppComponent', () => {
