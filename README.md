@@ -1,5 +1,5 @@
-# ESTA WebJS 2
-ESTA WebJS 2 is a development stack for web applications based on angular/cli. It adds the integration to our environment:
+# ESTA WebJS 2+
+ESTA WebJS 2+ is a development stack for web applications based on angular/cli. It adds the integration to our environment:
 
 * Jenkins
 * SonarQube including coverage
@@ -14,33 +14,12 @@ ESTA WebJS 2 is a development stack for web applications based on angular/cli. I
 * Clone this repository
 * Change the following settings:
 
-### pom.xml
-Enter your own data:
-```xml
-<groupId>ch.sbb.esta.webjs</groupId>
-<artifactId>esta-webjs-2-starterkit</artifactId>
-<version>2.0.0-SNAPSHOT</version>
- 
-<distributionManagement>
-    <repository>
-      <id>hosted.esta-webjs.releases</id>
-      <url>...deine URL...</url>
-    </repository>
-    <snapshotRepository>
-      <id>hosted.esta-webjs.snapshots</id>
-      <url>...deine URL...</url>
-    </snapshotRepository>
-</distributionManagement>
-```
-
-### package.json
-Enter your own data. Also Version and Authors...   
-```json
-{"name": "webjs-starterkit"}
-```
-
-### docker/Dockerfile
-Change all the names and the point where your artifacts come from
+### Values to change after checkout
+Replace the placeholders/esta values in:
+- Jenkinsfile (All the placeholders in <>)
+- pom.xml (GroupId, ArtifactId, Version)
+- package.json (Name, Version)
+- Dockerfile (Names, URL, FROM values)
 
 ### Environments
 Adjust the files in app environments with your personal auth configuration

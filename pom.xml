@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ch.sbb.esta.webjs</groupId>
-    <artifactId>esta-webjs-2-starterkit</artifactId>
-    <version>5.1.0-SNAPSHOT</version>
+  <groupId>ch.sbb.esta.webjs</groupId>
+  <artifactId>esta-webjs-2-starterkit</artifactId>
+  <version>6.0.3-SNAPSHOT</version>
 
-    <packaging>pom</packaging>
-    <name>${project.artifactId}</name>
+  <packaging>pom</packaging>
+  <name>${project.artifactId}</name>
 
-    <properties>
-        <sonar.language>ts</sonar.language>
-        <sonar.profile>TsLint</sonar.profile>
-        <sonar.sources>src/app</sonar.sources>
-        <sonar.verbose>true</sonar.verbose>
-        <sonar.exclusions>**/node_modules/**,**/*.spec.ts,**/*.module.ts,**/*.routes.ts</sonar.exclusions>
-        <sonar.test.inclusion>**/*.spec.ts</sonar.test.inclusion>
-        <sonar.ts.tslint.configPath>tslint.json</sonar.ts.tslint.configPath>
-        <sonar.ts.coverage.lcovReportPath>reports/coverage/lcov.info</sonar.ts.coverage.lcovReportPath>
-        <jenkins.build-javascript.reportsDirectory>reports/</jenkins.build-javascript.reportsDirectory>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+  <properties>
+    <sonar.language>ts</sonar.language>
+    <sonar.profile>TsLint</sonar.profile>
+    <sonar.sources>src/app</sonar.sources>
+    <sonar.verbose>true</sonar.verbose>
+    <sonar.exclusions>**/node_modules/**,**/*.spec.ts,**/*.module.ts,**/*.routes.ts</sonar.exclusions>
+    <sonar.test.inclusion>**/*.spec.ts</sonar.test.inclusion>
+    <sonar.ts.tslint.configPath>tslint.json</sonar.ts.tslint.configPath>
+    <sonar.ts.coverage.lcovReportPath>reports/coverage/lcov.info</sonar.ts.coverage.lcovReportPath>
+    <jenkins.build-javascript.reportsDirectory>reports/</jenkins.build-javascript.reportsDirectory>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
-    <build>
-        <plugins>
-            <!--Build paketieren-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>build zip file</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>assembly.xml</descriptor>
-                            </descriptors>
-                            <appendAssemblyId>false</appendAssemblyId>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+  <build>
+    <plugins>
+      <!--Build paketieren-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>build zip file</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+              <appendAssemblyId>false</appendAssemblyId>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
       <!-- Kein Java enthalten -->
       <plugin>
@@ -60,18 +60,6 @@
         </executions>
       </plugin>
 
-
     </plugins>
   </build>
-
-    <distributionManagement>
-        <repository>
-            <id>hosted.esta-webjs.releases</id>
-            <url>${nexus_release_url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>hosted.esta-webjs.snapshots</id>
-            <url>${nexus_snapshot_url}</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>

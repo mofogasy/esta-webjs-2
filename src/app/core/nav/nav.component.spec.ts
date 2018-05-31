@@ -13,8 +13,7 @@ import {AuthService} from 'esta-webjs-extensions';
 import {KeycloakProfile} from 'keycloak-js';
 
 import {NavComponent} from './nav.component';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import {Observable, of} from 'rxjs';
 
 describe('NavbarComponent', () => {
     let component: NavComponent;
