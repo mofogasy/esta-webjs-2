@@ -18,7 +18,7 @@ import {Environment} from './environment.model';
 const authOptions: KeycloakInitOptions = {flow: 'implicit'};
 const authConfig: KeycloakConfig = {
   realm: 'YOUR_REALM',
-  url: 'https://YOUR_SERVER.com/auth',
+  url: 'https://YOUR_SERVER.com',
   clientId: 'YOUR_CLIENT_ID'
 };
 
