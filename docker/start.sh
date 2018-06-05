@@ -10,6 +10,9 @@ fi
 if [ -n "$KEYCLOAK_CLIENTID" ]; then
     sed -i "s#YOUR_CLIENT_ID#$KEYCLOAK_CLIENTID#g" /usr/share/nginx/html/main.*.js
 fi
+if [ -n "$KEYCLOAK_IDP_HINT" ]; then
+    sed -i "s#YOUR_IDP_HINT#$KEYCLOAK_IDP_HINT#g" /usr/share/nginx/html/main.*.js
+fi
 
 # start webserver
 exec nginx

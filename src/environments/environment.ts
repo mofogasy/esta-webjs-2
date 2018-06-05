@@ -19,7 +19,8 @@ const authOptions: KeycloakInitOptions = {flow: 'implicit'};
 const authConfig: KeycloakConfig = {
   realm: 'YOUR_REALM',
   url: 'https://YOUR_SERVER.com',
-  clientId: 'YOUR_CLIENT_ID'
+  clientId: 'YOUR_CLIENT_ID',
+  idpHint: 'YOUR_IDP_HINT'
 };
 
 export const environment: Environment = {
