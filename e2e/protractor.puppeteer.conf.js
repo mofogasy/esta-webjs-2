@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
-    './src/**/*puppeteer.e2e-spec.ts'
+    './src/**/*.e2e-puppeteer-spec.ts'
   ],
   capabilities: {
     'browserName': 'chrome',
