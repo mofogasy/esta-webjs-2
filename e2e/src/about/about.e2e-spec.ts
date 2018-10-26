@@ -18,7 +18,7 @@ describe('AboutPage', function () {
         browser.get('#/about');
     });
 
-    it('should change the langugae from german to english and back to german', () => {
+    it('should change the language from german to english and back to german', () => {
         // when
         aboutPage.changeToEnglish();
         // then

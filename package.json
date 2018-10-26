@@ -12,6 +12,7 @@
     "test": "ng test --watch=false",
     "test-selenium": "ng test --progress=false --watch=false --browsers=SeleniumCH,SeleniumFF --code-coverage",
     "e2e-local": "ng e2e",
+    "e2e-puppeteer": "ng e2e --protractor-config=e2e/protractor.puppeteer.conf.js",
     "pree2e-selenium": "cp e2e/protractor.webgrid.conf.js e2e/protractor.conf.js; sed -i \"s/\"PORT_VARIABLE\"/$(echo $externalport)/g\" angular.json; sed -i \"s/PUBLIC_HOST_VARIABLE/$(echo $host):$(echo $externalport)/g\" angular.json",
     "e2e-selenium": "ng e2e --dev-server-target=webjs-starterkit:serve-e2e-ci --host=0.0.0.0 --port=$(echo $externalport)",
     "build-prod-local": "ng build --prod",
