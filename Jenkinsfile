@@ -21,6 +21,8 @@ pipeline {
         // sh 'npm run test-selenium && npm run e2e-selenium'
         sh 'npm run test-selenium'
 
+        sh 'npm run e2e-puppeteer'
+
         junit '**/reports/*.xml'
         withSonarQubeEnv('Sonar SBB CFF FFS AG') {
           sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test'
