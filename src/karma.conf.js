@@ -36,7 +36,7 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml', 'junit'],
-    port: 9876,
+    port: process.env.externalport || 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,

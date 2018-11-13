@@ -11,7 +11,6 @@ pipeline {
     stage('Prepare') {
       steps {
         sh 'npm install'
-        sh 'npm run clean'
         sh 'npm run lint'
       }
     }
