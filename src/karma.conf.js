@@ -35,10 +35,8 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-      ? ['progress', 'coverage-istanbul', 'junit']
-      : ['progress', 'kjhtml', 'junit'],
-    port: process.env.externalport || 9876,
+    reporters: ['progress', 'kjhtml', 'junit'],
+    port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,

@@ -9,7 +9,7 @@
  */
 import {by, element} from 'protractor';
 
-export class AboutPage {
+export class AboutPo {
 
     private changeToGermanButton;
     private changeToEnglishButton;
