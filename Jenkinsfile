@@ -11,7 +11,6 @@ pipeline {
     stage('Prepare') {
       steps {
         sh 'npm install'
-        sh 'npm run clean'
         sh 'npm run lint'
       }
     }
@@ -19,10 +18,16 @@ pipeline {
     stage('Unit Tests') {
       steps {
         // Use this as soon as you have adjusted environment.ts with your authconfig
-        // sh 'npm run test-selenium && npm run e2e-selenium'
-        sh 'npm run test-selenium'
+        withCredentials([
+          usernamePassword(credentialsId: 'browserstack',
+            passwordVariable: 'BROWSERSTACK_ACCESS_KEY',
+            usernameVariable: 'BROWSERSTACK_USERNAME')
+        ]) {
+          sh 'npm run test-browserstack'
+          sh 'npm run e2e-browserstack'
+          junit '**/reports/*.xml'
+        }
 
-        junit '**/reports/*.xml'
         withSonarQubeEnv('Sonar SBB CFF FFS AG') {
           sh 'mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent test'
           sh 'mvn -B sonar:sonar -Dsonar.branch=$BRANCH_NAME'

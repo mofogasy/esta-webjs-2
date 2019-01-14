@@ -2,15 +2,8 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
-
-  var seleniumWebgrid = {
-    hostname: 'webtestgrid.sbb.ch',
-    port: 4444
-  };
-
   config.set({
-    hostname: process.env.host || require('my-local-ip')(),
-    basePath: '../',
+    basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
@@ -19,10 +12,11 @@ module.exports = function (config) {
       require('karma-junit-reporter'),
       require('karma-webdriver-launcher'),
       require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-browserstack-launcher'),
     ],
     junitReporter: {
-      outputDir: 'reports',
+      outputDir: require('path').join(__dirname, '../reports'),
       suite: 'unit-tests',
       outputFile: 'unit-tests.xml',
       useBrowserName: false
@@ -31,34 +25,32 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      dir: 'reports/coverage',
-      reports: ['html', 'lcovonly'],
+      dir: require('path').join(__dirname, '../reports/coverage'),
+      reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-      ? ['progress', 'coverage-istanbul', 'junit']
-      : ['progress', 'kjhtml', 'junit'],
-    port: process.env.externalport || 9876,
+    reporters: ['progress', 'kjhtml', 'junit'],
+    port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     customLaunchers: {
-      'SeleniumCH': {
-        base: 'WebDriver',
-        config: seleniumWebgrid,
-        browserName: 'chrome'
+      'BsChrome': {
+        base: 'BrowserStack',
+        os: 'Windows',
+        os_version: '10',
+        browser: 'Chrome'
       },
-      'SeleniumFF': {
-        base: 'WebDriver',
-        config: seleniumWebgrid,
-        browserName: 'firefox'
-      },
-      'SeleniumIE': {
-        base: 'WebDriver',
-        config: seleniumWebgrid,
-        browserName: 'internet explorer',
-        'x-ua-compatible': 'IE=edge'
-      },
+      'BsFirefox': {
+        base: 'BrowserStack',
+        os: 'Windows',
+        os_version: '10',
+        browser: 'Firefox'
+      }
+    },
+    browserStack: {
+      username: process.env.BROWSERSTACK_USERNAME,
+      accessKey: process.env.BROWSERSTACK_ACCESS_KEY
     },
     browsers: ['Chrome'],
     singleRun: false

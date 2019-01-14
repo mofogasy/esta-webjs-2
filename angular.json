@@ -8,7 +8,11 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -48,24 +52,14 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
-            },
-            "e2e": {
-              "fileReplacements": [
+              "buildOptimizer": true,
+              "budgets": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.e2e.ts"
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              ]
             }
           }
         },
@@ -78,17 +72,6 @@
             "production": {
               "browserTarget": "webjs-starterkit:build:production"
             }
-          }
-        },
-        "serve-e2e-ci": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "webjs-starterkit:build",
-            "disableHostCheck": true,
-            "publicHost": "PUBLIC_HOST_VARIABLE",
-            "host": "0.0.0.0",
-            "port": "PORT_VARIABLE",
-            "progress": false
           }
         },
         "extract-i18n": {
@@ -105,7 +88,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -131,12 +114,18 @@
     "webjs-starterkit-e2e": {
       "root": "e2e/",
       "projectType": "application",
+      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "webjs-starterkit:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "webjs-starterkit:serve:production"
+            }
           }
         },
         "lint": {
