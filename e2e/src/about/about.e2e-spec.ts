@@ -7,18 +7,18 @@
  * @version: 2.0.0
  * @since 30.04.2017, 2017.
  */
-import {AboutPage} from './about.page';
+import {AboutPo} from './about.po';
 import {browser} from 'protractor';
 
 describe('AboutPage', function () {
-    let aboutPage: AboutPage;
+    let aboutPage: AboutPo;
 
     beforeEach(() => {
-        aboutPage = new AboutPage();
+        aboutPage = new AboutPo();
         browser.get('#/about');
     });
 
-    it('should change the langugae from german to english and back to german', () => {
+    it('should change the language from german to english and back to german', () => {
         // when
         aboutPage.changeToEnglish();
         // then
