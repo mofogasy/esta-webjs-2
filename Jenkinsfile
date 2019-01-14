@@ -19,7 +19,7 @@ pipeline {
       steps {
         // Use this as soon as you have adjusted environment.ts with your authconfig
         withCredentials([
-          usernamePassword(credentialsId: 'browserstack_mwereader1',
+          usernamePassword(credentialsId: 'browserstack',
             passwordVariable: 'BROWSERSTACK_ACCESS_KEY',
             usernameVariable: 'BROWSERSTACK_USERNAME')
         ]) {

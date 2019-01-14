@@ -12,7 +12,7 @@
     "test-browserstack": "ng test --progress=false --watch=false --browsers=BsChrome,BsFirefox --code-coverage",
     "e2e-local": "ng e2e",
     "e2e-puppeteer": "ng e2e --protractor-config=e2e/protractor.puppeteer.conf.js",
-    "e2e-browserstack": "ng e2e --protractor-config=e2e/protractor.browserstrack.conf.js",
+    "e2e-browserstack": "ng e2e --protractor-config=e2e/protractor.browserstack.conf.js",
     "build-prod-local": "ng build --prod",
     "build-prod-ci": "ng build --prod --progress=false"
   },
