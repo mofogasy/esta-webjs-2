@@ -10,7 +10,7 @@ pipeline {
 
     stage('Prepare') {
       steps {
-        sh 'npm install'
+        sh 'npm ci'
         sh 'npm run lint'
       }
     }
